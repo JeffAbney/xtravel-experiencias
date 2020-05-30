@@ -1,0 +1,642 @@
+@import "./assets/fonts.scss";
+
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+} */
+
+* {
+  font-family: "Lato";
+}
+
+strong,
+h1 {
+  font-family: "Lato-Bold";
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+small {
+  font-size: 1rem;
+}
+
+:root {
+  --yellow: #f2d750;
+  --blue: #00406e;
+  --grey: #353b44;
+  --light-blue: #41b6e6;
+}
+
+.react-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+}
+
+[type="button"]:focus,
+[type="button"]:hover,
+[type="submit"]:focus,
+[type="submit"]:hover,
+button:focus,
+button:hover {
+  color: var(--light-blue);
+  background-color: var(--blue);
+  text-decoration: none;
+}
+
+.detail-input,
+.detail-select,
+#date-picker-vuelta,
+#date-picker-ida {
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  min-width: 75px;
+  padding-left: 15px;
+  font-size: 0.8rem;
+}
+
+.error-container {
+  height: 20px;
+  min-width: 1px;
+}
+
+.row {
+  display: flex;
+}
+
+.detail-submit {
+  width: 200px;
+  height: 40px;
+  background-color: var(--light-blue);
+  border-radius: 10px;
+  margin: 30px 0 10px 25px;
+  border: none;
+  color: var(--blue);
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: bold;
+}
+
+.dark-button {
+  width: 200px;
+  height: 40px;
+  background-color: var(--blue);
+  border-radius: 10px;
+  margin: 30px 0 10px 25px;
+  border: none;
+  color: var(--light-blue);
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: bold;
+}
+
+.dark-button:focus,
+.dark-button:hover {
+  color: var(--blue);
+  background-color: var(--yellow);
+  text-decoration: none;
+}
+
+.reserve-submit {
+  max-width: 90%;
+  width: 200px;
+  height: 50px;
+  background-color: var(--yellow);
+  border-radius: 10px;
+  margin: 30px 0 10px 0;
+  border: none;
+  color: var(--blue);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+select.custom-arrow {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  /* no standardized syntax available, no ie-friendly solution available */
+  padding-right: 25px;
+  width: fit-content;
+}
+
+img.arrow {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
+  pointer-events: none;
+  /* everything after this is just to cover up the original arrow */
+  /* (for browsers that don't support the syntax used above) */
+  background-color: transparent;
+  padding-right: 5px;
+  height: 10px;
+  width: 17px;
+}
+
+.custom-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  max-width: 175px;
+  margin: 10px 0 10px 0;
+}
+
+.small-select-wrapper {
+  max-width: 125px;
+}
+
+#time-picker-ida,
+#time-picker-vuelta {
+  width: 120px;
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  min-width: 75px;
+  padding-left: 15px;
+  font-size: 0.8rem;
+}
+
+label {
+  color: var(--blue);
+  display: flex;
+  flex-direction: column;
+  font-family: "Lato-Bold";
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.booking-box {
+  background-color: var(--blue);
+  width: 95%;
+  border-radius: 25px;
+  padding: 15px 60px 60px 70px;
+}
+
+.field-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 5px 15px 5px;
+}
+
+.image-centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.radio-button-container {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.radio-button-container p {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: white;
+}
+
+.results-box {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 215px;
+  width: 95%;
+  border-radius: 25px;
+  border: gray 1px solid;
+  margin-top: 40px;
+  color: var(--blue);
+}
+
+.results-header {
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+
+.results-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 55px;
+}
+
+.results-details h1 {
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.results-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.trip-grid {
+  display: grid;
+  grid-template-columns: 40px max-content;
+  gap: 0;
+}
+
+.trip-grid > div {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+}
+
+.trip-grid > div > p {
+  width: 100%;
+  margin: 0 0 0 10px;
+  text-align: start;
+}
+
+.trip-grid-text-line {
+  display: flex;
+  height: 20px;
+  align-items: center;
+}
+
+.results-image-container {
+  display: flex;
+  height: 100%;
+  width: 30%;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.results-price-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 25%;
+  border-radius: 0 25px 25px 0;
+  background-color: var(--light-blue);
+  align-items: center;
+  justify-content: center;
+}
+
+.results-price-container h1 {
+  text-align: center;
+}
+
+.transport-details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: var(--yellow);
+  padding: 20px 20px 10px 20px;
+  border-radius: 15px;
+  color: var(--blue);
+}
+
+.transport-line {
+  height: 40px;
+  width: 3px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.big-top {
+  margin-top: 50px !important;
+}
+
+.small-top {
+  margin-top: 10px !important;
+}
+
+.top-margin-60 {
+  margin-top: 40px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.dot-container {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.dot {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 75% !important;
+}
+
+.person {
+  height: 35px !important;
+}
+
+.line-container {
+  z-index: 0;
+  height: 15px;
+}
+
+.transport-fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.purchase-details-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: grey 1px solid;
+  border-radius: 14px;
+  color: var(--blue);
+}
+
+.purchase-details-box * {
+  margin: 0;
+}
+
+.purchase-details-box h3 {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.purchase-details-box img {
+  width: 50%;
+  margin-left: 0;
+}
+
+.payment-screen {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.payment-form-container {
+  width: 70%;
+  padding: 15px;
+}
+
+.payment-form-container p {
+  color: var(--light-blue);
+  font-size: 1.3rem;
+}
+
+.reservation-details-container {
+  width: 30%;
+  max-width: 350px;
+  color: var(--blue);
+}
+
+.payment-form-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.payment-form-section-title {
+  font-size: 1.7rem;
+  color: var(--blue);
+  width: 100%;
+}
+
+.payment-form-section label {
+  width: 90%;
+  padding: 5px;
+}
+
+.payment-form-section label.half {
+  width: 40%;
+  padding: 5px;
+}
+.payment-form-section label.third {
+  width: 30%;
+  padding: 5px;
+}
+
+.small-input {
+  width: 50px;
+  flex: 1;
+  align-self: center;
+}
+
+.tiny-input {
+  width: 45px;
+  flex: 1;
+  align-self: center;
+}
+
+.payment-form-field-title {
+  font-size: 1.2rem;
+  display: inline;
+}
+
+.date-divider {
+  margin: 0 3px 0 3px;
+}
+
+#thank-you-img {
+  display: block;
+  height: 550px;
+  width: 100%;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("../src/assets/images/thankYouDesktop.png");
+}
+
+/* -------------------------- START MOBILE STYLES ------------------ */
+
+@media only screen and (max-device-width: 812px) {
+  small {
+    font-size: 0.8rem;
+  }
+
+  .react-app {
+    width: 100vw;
+  }
+
+  .booking-box {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .radio-button-container {
+    flex: 1;
+  }
+
+  .transport-details-container {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .transport-fields {
+    justify-content: space-between;
+  }
+  .field-container {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    align-items: flex-end;
+  }
+
+  .small-field {
+    flex: 0.4;
+  }
+
+  select.custom-arrow {
+    width: 100%;
+  }
+
+  label {
+    width: 100%;
+  }
+
+  .custom-select-wrapper {
+    max-width: 100%;
+  }
+
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .detail-input,
+  .detail-select,
+  #date-picker-vuelta,
+  #date-picker-ida {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mobile-submit {
+    width: 50%;
+    align-items: flex-start;
+  }
+
+  .results-box {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .results-image-container {
+    margin-top: 70px;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .results-details {
+    margin-top: 0;
+  }
+
+  .results-price-container {
+    width: 100%;
+    height: auto;
+    border-radius: 0 0 25px 25px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .results-price-container h1,
+  .results-price-container button {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .big-top,
+  .small-top {
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .top-margin-72 {
+    margin-top: 0;
+  }
+
+  .transport-line {
+    height: 25px;
+    width: 2px;
+    margin-top: -15px;
+    margin-bottom: -5px;
+  }
+
+  .reserve-submit {
+    height: 40px;
+    width: 150px;
+  }
+  .person {
+    height: 30px !important;
+  }
+
+  .payment-screen {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .reservation-details-container {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 15px;
+    padding: 10px;
+    border: grey 1px solid;
+    border-radius: 1%;
+  }
+
+  .payment-form-container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .payment-form-section {
+    align-items: flex-end;
+  }
+
+  #thank-you-img {
+    height: 250px;
+    width: auto;
+    background-image: url("../src/assets/images/thankYouMobile.png");
+  }
+}
+
+/* --------------------------- END MOBILE STYLES ----------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
