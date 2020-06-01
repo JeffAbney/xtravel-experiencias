@@ -18,8 +18,6 @@ const ThankYou = (props) => {
   }
 
   const imageId = (function getThankYouImageId() {
-    console.log('imageId lang -', language);
-    console.log('paymentMethod -', payment_Method)
     if (language === 'es' && payment_Method === 'card') {
       return 'paid-image-es'
     }
