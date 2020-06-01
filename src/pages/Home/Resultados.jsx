@@ -8,31 +8,27 @@ import PropTypes, {
 import { LanguageContext } from '../../components/LanguageContext';
 import texts from '../../constants/texts'
 import car from '../../utils/getCar';
-import car6 from '../../assets/images/Suburban.jpg';
-import car9 from '../../assets/images/car9.png';
-import car14 from '../../assets/images/car14.png';
+import car6 from '../../assets/images/Suburban.png';
 import dot from '../../assets/icons/Oval.png';
 import line from '../../assets/icons/Line.png';
 import person from '../../assets/icons/passengers.png';
 import {
-  fromAeropuertoCancun,
-  fromAeropuertoMerida,
-  hotelesCancun,
-  hotelesPuertoJuarez,
-  hotelesPlayaMujeres,
-  hotelesPuertoMorelos,
-  hotelesPlayaDelCarmen,
-  hotelesPuertoAventuras,
-  hotelesAkumal,
-  hotelesTulum,
-  hotelesMeridaAeropuerto,
-  hotelesMeridaAlrededores,
-  hotelesMeridaCentro,
-  hotelesMeridaColonias,
-  hotelesMeridaPeriferia,
-  hotelesMeridaSegundoCuadro,
-} from '../../constants/destinos';
-import { fromCancun, fromMerida } from '../../constants/precios';
+  pricesFromCancunYPuertoMorelos,
+  pricesFromPlayaDelCarmen,
+  pricesFromPuertoAventurasAkumalTulum,
+  pricesFromMerida
+} from '../../constants/precios';
+import imgCelestun from '../../assets/images/Celestun.png';
+import imgChichen from '../../assets/images/chichen.png';
+import imgColoradas from '../../assets/images/Coloradas.png';
+import imgIzamal from '../../assets/images/Izamal.png';
+import imgProgreso from '../../assets/images/progreso.png';
+import imgSisal from '../../assets/images/Sisal.png';
+import imgTulumXelha from '../../assets/images/Tulum-Xelha.png';
+import imgTulum from '../../assets/images/Tulum.png';
+import imgUxmal from '../../assets/images/Uxmal.png';
+import imgValladolid from '../../assets/images/Valladolid.png';
+import imgXcaret from '../../assets/images/Xcaret.jpg';
 
 require('dotenv').config();
 
@@ -41,163 +37,95 @@ const Resultados = (props) => {
   const {
     origen,
     destino,
-    numeroPasajeros,
-    fechaIda,
-    fechaVuelta,
-    tipoDeViaje,
   } = reservation;
   const history = useHistory();
   const { language, setLanguage } = useContext(LanguageContext);
 
   function goToForm() {
     setVehicle(car(pasajeros));
-    setPrice(tipoDeViaje === 'sencillo' ? price : (price * 2));
+    setPrice(price);
     history.push('/infoDeReserva');
   }
 
-  const price = (function getPrice() {
-    if (origen === 'Aeropuerto Cancún' || destino === 'Aeropuerto Cancún') {
-      if (hotelesCancun.includes(destino) || hotelesCancun.includes(origen)) {
-        return fromCancun["Zona Hotelera Cancun"][pasajeros];
-      }
-      if (hotelesPuertoJuarez.includes(destino) || hotelesPuertoJuarez.includes(origen)) {
-        return fromCancun["Puerto Juarez"][pasajeros];
-      }
-      if (hotelesPlayaMujeres.includes(destino) || hotelesPlayaMujeres.includes(origen)) {
-        return fromCancun["Playa Mujeres"][pasajeros];
-      }
-      if (hotelesPuertoMorelos.includes(destino) || hotelesPuertoMorelos.includes(origen)) {
-        return fromCancun["Puerto Morelos"][pasajeros];
-      }
-      if (hotelesPlayaDelCarmen.includes(destino) || hotelesPlayaDelCarmen.includes(origen)) {
-        return fromCancun["Playa Del Carmen"][pasajeros];
-      }
-      if (hotelesPuertoAventuras.includes(destino) || hotelesPuertoAventuras.includes(origen)) {
-        return fromCancun["Puerto Aventuras"][pasajeros];
-      }
-      if (hotelesAkumal.includes(destino) || hotelesAkumal.includes(origen)) {
-        return fromCancun["Akumal"][pasajeros];
-      }
-      if (hotelesTulum.includes(destino) || hotelesTulum.includes(origen)) {
-        return fromCancun["Zona Hotelera De Tulum"][pasajeros];
-      }
-      if (origen === 'Aeropuerto Cancún') {
-        return fromCancun[destino][pasajeros];
-      }
-      return fromCancun[origen][pasajeros];
+  const destinoImage = (function getImage() {
+    if (destino === 'Celestun') {
+      return imgCelestun;
     }
-    if (origen === 'Aeropuerto Mérida' || destino === 'Aeropuerto Mérida') {
-      if (hotelesMeridaAeropuerto.includes(destino) || hotelesMeridaAeropuerto.includes(origen)) {
-        return fromMerida["Merida Zona Aeropuerto"][pasajeros];
-      }
-      if (hotelesMeridaCentro.includes(destino) || hotelesMeridaCentro.includes(origen)) {
-        return fromMerida["Merida Zona Centro"][pasajeros];
-      }
-      if (hotelesMeridaSegundoCuadro.includes(destino) || hotelesMeridaSegundoCuadro.includes(origen)) {
-        return fromMerida["Merida Zona Segundo Cuadro"][pasajeros];
-      }
-      if (hotelesMeridaColonias.includes(destino) || hotelesMeridaColonias.includes(origen)) {
-        return fromMerida["Merida Zona Colonias"][pasajeros];
-      }
-      if (hotelesMeridaPeriferia.includes(destino) || hotelesMeridaPeriferia.includes(origen)) {
-        return fromMerida["Merida Zona Periferia"][pasajeros];
-      }
-      if (hotelesMeridaAlrededores.includes(destino) || hotelesMeridaAlrededores.includes(origen)) {
-        return fromMerida["Merida Zona Alrededores"][pasajeros];
-      }
-      if (origen === 'Aeropuerto Mérida') {
-        return fromMerida[destino][pasajeros];
-      }
-      return fromMerida[origen][pasajeros];
+    if (destino === 'Chichen Itza') {
+      return imgChichen;
     }
-    return 9999.99;
+    if (destino === 'Coloradas') {
+      return imgColoradas;
+    }
+    if (destino === 'Izamal') {
+      return imgIzamal;
+    }
+    if (destino === 'Progreso') {
+      return imgProgreso;
+    }
+    if (destino === 'Sisal') {
+      return imgSisal;
+    }
+    if (destino === 'Tulum Y Xelha') {
+      return imgTulumXelha;
+    }
+    if (destino === 'Tulum') {
+      return imgTulum;
+    }
+    if (destino === 'Uxmal') {
+      return imgUxmal;
+    }
+    if (destino === 'Valladolid') {
+      return imgValladolid;
+    }
+    if (destino === 'Xcaret') {
+      return imgXcaret;
+    }
   }());
+
+  const excursion = (function getPrice() {
+    console.log('getPrice destino -', destino)
+    if (origen === 'Cancun' || origen === 'Puerto Morelos') {
+      return pricesFromCancunYPuertoMorelos;
+    }
+    if (origen === 'Playa Del Carmen') {
+      return pricesFromPlayaDelCarmen;
+    }
+    if (
+      origen === 'Puerto Aventuras' ||
+      origen === 'Akumal' ||
+      origin === 'Tulum'
+    ) {
+      return pricesFromPuertoAventurasAkumalTulum;
+    }
+    if (origen === 'Merida') {
+      return pricesFromMerida;
+    } else {
+      console.log('origen', origen);
+    }
+  }());
+
+  const price = excursion[destino].precios[pasajeros];
+  const duration = excursion[destino].duration;
 
   return (
     <div className="results-box" id={id}>
       <h1
         className="results-header"
-        style={tipoDeViaje === 'sencillo' ? { marginLeft: -108 } : { marginLeft: -85 }}>
-        {tipoDeViaje === 'sencillo' ? texts[language]['resultados-0'] : texts[language]['resultados-1']}
+      >
+        {destino}
       </h1>
       <div className="results-image-container">
-        <img style={car(pasajeros) === car6 ? { width: '80%' } : null} src={car(pasajeros)} className="results-image" alt="car" />
+        <div className="result-backdrop" style={{ backgroundImage: `url(${destinoImage})` }} />
+        <img src={car(pasajeros)} className="results-image" alt="car" />
       </div>
-
-      <div className="results-details">
-
-
-        {/* Start Grid */}
-        {/* Desde row */}
-        <div className="trip-grid">
-          <div style={{ display: 'flex', alignItems: 'center', height: 20 }}>
-            <div className="dot-container">
-              <img style={{ height: '75%' }} src={dot} alt="" className="dot" />
-            </div>
-          </div>
-          <div className="trip-grid-text-line"><p><strong>{texts[language]['index-2']} </strong>{origen}</p></div>
-
-          {/* Connection line row */}
-          <div className="line-container">
-            <img src={line} alt="" className="transport-line" className="transport-line" />
-          </div>
-          <div />
-          {/*  Hasta Row */}
-          <div style={{ display: 'flex', alignItems: 'center', height: 20 }}>
-            <div className="dot-container">
-              <img style={{ height: '75%' }} src={dot} alt="" className="dot" />
-            </div>
-          </div>
-          <div className="trip-grid-text-line"><p><strong>{texts[language]['index-3']}</strong>{destino}</p></div>
-
-          {/* Connection line row */}
-          {tipoDeViaje === 'redondo'
-            ? (
-              <div className="line-container">
-                <img src={line} alt="" className="transport-line" />
-              </div>
-            )
-            : null}
-          {tipoDeViaje === 'redondo'
-            ? <div />
-            : null
-          }
-          {/*  Regreso Row */}
-          {tipoDeViaje === 'redondo'
-            ? (
-              <div style={{ display: 'flex', alignItems: 'center', height: 20 }}>
-                <div className="dot-container">
-                  <img style={{ height: '75%' }} src={dot} alt="" className="dot" />
-                </div>
-              </div>
-            ) : null
-          }
-          {tipoDeViaje === 'redondo'
-            ? (
-              <div className="trip-grid-text-line"><p><strong>{texts[language]['resultados-2']} </strong>{origen}</p></div>
-            )
-            : null
-          }
-
-          {/* Cupo Máximo Row */}
-          <div className={tipoDeViaje === 'sencillo' ? 'big-top' : 'small-top'}>
-            <img src={person} alt="" className="dot person" />
-          </div>
-          <div
-            className={tipoDeViaje === 'sencillo' ? 'big-top' : 'small-top'}
-            style={tipoDeViaje === 'sencillo'
-              ? { display: 'flex', alignItems: 'center' }
-              : { display: 'flex', alignItems: 'center' }}
-          >
-            <p className="cupo-maximo-text"><strong>{texts[language]['resultados-3']}</strong>{` ${pasajeros} ${texts[language]['resultados-4']}`}</p>
-          </div>
-        </div>
-
-      </div >
       <div className="results-price-container">
-        <h1>{tipoDeViaje === 'sencillo' ? `$${price.toLocaleString()}` : `$${(price * 2).toLocaleString()}`} <small> MXN</small> </h1>
+        <h2>$ {price.toLocaleString()}<small> MXN</small> </h2>
         <button className="reserve-submit" onClick={goToForm}>{texts[language]['resultados-5']}</button>
       </div>
+      <div style={{ width: '100%', backgroundColor: '#000', paddingBottom: 1, marginTop: 25, marginBottom: 15 }} />
+      <p className="result-detail">{pasajeros} {texts[language]['resultados-4']}</p>
+      <p className="result-detail">{texts[language]['resultados-6a']} {duration} {texts[language]['resultados-6b']}</p>
     </div >
   );
 };
@@ -210,7 +138,6 @@ Resultados.propTypes = {
     numeroPasajeros: string.isRequired,
     fechaIda: PropTypes.instanceOf(Date).isRequired,
     fechaVuelta: PropTypes.instanceOf(Date),
-    tipoDeViaje: string.isRequired,
   }).isRequired,
 };
 

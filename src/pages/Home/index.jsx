@@ -14,25 +14,18 @@ import dropDownArrow from '../../assets/icons/dropdown_arrow.png';
 import checkSpace from '../../assets/icons/check_Space.png';
 import checkMark from '../../assets/icons/Checkmark.png';
 import {
-  fromAeropuertoCancun,
-  fromAeropuertoMerida,
-  hotelesCancun,
-  hotelesPuertoJuarez,
-  hotelesPlayaMujeres,
-  hotelesPuertoMorelos,
-  hotelesPlayaDelCarmen,
-  hotelesPuertoAventuras,
-  hotelesAkumal,
-  hotelesTulum
+  excursionsFromCancun,
+  excursionsFromMerida,
 } from '../../constants/destinos';
+import excursionOrigins from '../../constants/origins';
 
 registerLocale("es", es);
 
 const unfilteredAllPlaces = [
   'Aeropuerto Cancún',
   'Aeropuerto Mérida',
-  ...fromAeropuertoCancun,
-  ...fromAeropuertoMerida,
+  ...excursionsFromCancun,
+  ...excursionsFromMerida,
 ];
 
 function onlyUnique(value, index, self) {
@@ -49,10 +42,7 @@ const Home = (props) => {
   const [horaIda, setHoraIda] = useState(new Date());
   const [fechaVuelta, setFechaVuelta] = useState(new Date());
   const [horaVuelta, setHoraVuelta] = useState(new Date());
-  const [tipoDeViaje, setTipoDeViaje] = useState('sencillo');
-  const [dateError, setDateError] = useState(false);
-  const [timeError, setTimeError] = useState(false);
-  const watchOrigen = watch('origen', 'Aeropuerto Cancún');
+  const watchOrigen = watch('origen');
   const watchDestino = watch('destino');
   const watchNumeroPasajeros = watch('numeroPasajeros', '1');
 
@@ -70,27 +60,15 @@ const Home = (props) => {
 
   useEffect(function resetResults() {
     setResultados(null)
-  }, [watchOrigen, watchDestino, watchNumeroPasajeros, tipoDeViaje])
+  }, [watchOrigen, watchDestino, watchNumeroPasajeros])
 
   const onSubmit = async (data) => {
     const allFields = {
-      ...data, fechaIda, fechaVuelta, tipoDeViaje, horaIda, horaVuelta
+      ...data, fechaIda, fechaVuelta, horaIda, horaVuelta, tipoDeViaje: 'excursión'
     };
     console.log('data -', allFields);
-    if (tipoDeViaje === 'redondo' && fechaIda.getTime() === fechaVuelta.getTime() && horaIda.getTime() >= horaVuelta.getTime()) {
-      console.log('Escoge una hora de vuelta después de la ida.');
-      setResultados(null);
-      setTimeError(true);
-    } else if (tipoDeViaje === 'redondo' && fechaIda.getTime() > fechaVuelta.getTime()) {
-      console.log('Escoge una fecha de vuelta después de la ida.');
-      setResultados(null);
-      setDateError(true);
-    } else {
-      setDateError(false);
-      setTimeError(false);
-      setResultados(allFields);
-      setReservationData(allFields);
-    }
+    setResultados(allFields);
+    setReservationData(allFields);
   };
 
   function handleChangeFechaIda(fecha) {
@@ -104,36 +82,24 @@ const Home = (props) => {
   }
 
   function handleChangeHoraIda(hora) {
-    if (fechaIda.toLocaleDateString() === fechaVuelta.toLocaleDateString()) {
-      setHoraIda(hora);
-      setHoraVuelta(hora);
-    } else {
-      setHoraIda(hora);
-    }
+    setHoraIda(hora);
   }
 
   function setFechasIdaYVuelta(fecha) {
     setFechaIda(fecha);
-    setFechaVuelta(fecha);
   }
 
   function showDestinations(origen) {
-    const destinos = [];
-    if (origen === 'Aeropuerto Cancún') {
-      return fromAeropuertoCancun.map(
+    if (origen === 'Merida') {
+      return excursionsFromMerida.map(
         (destino) => <option key={destino} value={destino}>{destino}</option>,
       );
-    } if (origen === 'Aeropuerto Mérida') {
-      return fromAeropuertoMerida.map(
-        (destino) => <option key={destino} value={destino}>{destino}</option>,
-      );
-    } if (fromAeropuertoCancun.includes(origen.toString())) {
-      destinos.push('Aeropuerto Cancún');
-    } if (fromAeropuertoMerida.includes(origen.toString())) {
-      destinos.push('Aeropuerto Mérida');
     }
-    return destinos.map((destino) => <option key={destino} value={destino}>{destino}</option>);
+    return excursionsFromCancun.map(
+      (destino) => <option key={destino} value={destino}>{destino}</option>,
+    );
   }
+
   // Start Custom Validator for Places --------------------------------------------------
   // Find all inputs on the DOM which are bound to a datalist via their list attribute.
   var inputs = document.querySelectorAll('input[list]');
@@ -154,7 +120,7 @@ const Home = (props) => {
       if (optionFound) {
         this.setCustomValidity('');
       } else {
-        this.setCustomValidity('Please select a valid value.');
+        this.setCustomValidity(texts[language]['index-v']);
       }
     });
   }
@@ -166,80 +132,9 @@ const Home = (props) => {
       <div className="booking-box">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', flexDirection: 'row', paddingTop: 15, paddingBottom: 15 }}>
-              <div className="radio-button-container">
-                <div
-                  tabIndex="0"
-                  role="radio"
-                  aria-checked={tipoDeViaje === 'sencillo'}
-                  aria-labelledby="solo-ida"
-                  style={{
-                    position: 'relative',
-                    height: 28,
-                    width: 28,
-                    display: 'flex',
-                    marginRight: 15,
-                    textAlign: 'baseline',
-                  }}
-                  onClick={() => setTipoDeViaje('sencillo')}
-                  onKeyDown={() => setTipoDeViaje('sencillo')}
-                >
-                  <img src={checkSpace} className="image-centered" style={{ width: '100%' }} alt="" />
-                  {
-                    tipoDeViaje === 'sencillo'
-                      ? (
-                        <img
-                          src={checkMark}
-                          style={{
-                            position: 'absolute', bottom: 6, left: 6, height: 15, width: 15,
-                          }}
-                          alt=""
-                        />
-                      )
-                      : null
-                  }
-                </div>
-                <p id='index-0' name="solo-ida">{texts[language]['index-0']}</p>
-              </div>
-              <div className="radio-button-container">
-                <div
-                  tabIndex="0"
-                  role="radio"
-                  aria-checked={tipoDeViaje === 'redondo'}
-                  aria-labelledby="redondo"
-                  style={{
-                    position: 'relative',
-                    height: 28,
-                    width: 28,
-                    display: 'flex',
-                    marginRight: 15,
-                    textAlign: 'baseline',
-                  }}
-                  onClick={() => setTipoDeViaje('redondo')}
-                  onKeyDown={() => setTipoDeViaje('redondo')}
-                >
-                  <img src={checkSpace} className="image-centered" style={{ width: '100%' }} alt="" />
-                  {
-                    tipoDeViaje === 'redondo'
-                      ? (
-                        <img
-                          src={checkMark}
-                          style={{
-                            position: 'absolute', bottom: 6, left: 6, height: 15, width: 15,
-                          }}
-                          alt=""
-                        />
-                      )
-                      : null
-                  }
-                </div>
-                <p id="index-1">{texts[language]['index-1']}</p>
-              </div>
-            </div>
 
             <div className="transport-details-container">
               <div>
-                {tipoDeViaje === 'sencillo' ? null : <p>Detalles de ida</p>}
                 <div className="transport-fields">
                   <div className="field-container">
                     <label id="index-2" name="label-origen" htmlFor="origen">
@@ -248,7 +143,7 @@ const Home = (props) => {
                         <input autoComplete="off" placeholder={texts[language]['index-12']} list="origin" aria-labelledby="label-origen" className="custom-arrow detail-input" name="origen" ref={register({ required: true })} />
 
                         <datalist id="origin">
-                          {allPlaces.map((origen) => <option key={`origen-${origen}`} value={origen}>{origen}</option>)}
+                          {excursionOrigins.map((origen) => <option key={`origen-${origen}`} value={origen}>{origen}</option>)}
                         </datalist>
                       </div>
                     </label>
@@ -270,7 +165,7 @@ const Home = (props) => {
 
                   <div className="field-container">
                     <label htmlFor="fecha-ida">
-                      {texts[language]['index-4']} {tipoDeViaje === 'redondo' ? texts[language]['index-4a'] : null}:
+                      {texts[language]['index-4']}:
                     <div className="custom-select-wrapper">
                         <DatePicker
                           id="date-picker-ida"
@@ -303,7 +198,7 @@ const Home = (props) => {
 
                   <div className="field-container small-field">
                     <label htmlFor="hora-ida">
-                      {texts[language]['index-5']}  {tipoDeViaje === 'redondo' ? texts[language]['index-5a'] : null}:
+                      {texts[language]['index-5']}:
                     <div className="custom-select-wrapper">
                         <DatePicker
                           id="time-picker-ida"
@@ -363,98 +258,9 @@ const Home = (props) => {
                     </label>
                     <div className="error-container" />
                   </div>
-
-
                 </div>
-                {tipoDeViaje === 'redondo' ? <p>{texts[language]['index-8']}</p> : null}
-                {
-                  tipoDeViaje === 'redondo'
-                    ? (
-                      <div style={{ display: 'flex' }}>
-                        <div className="field-container">
-                          <label htmlFor="fecha-vuelta">
-                            {texts[language]['index-9']}
-                            <div className="custom-select-wrapper">
-                              <DatePicker
-                                id="date-picker-vuelta"
-                                name="fecha-vuelta"
-                                selected={fechaIda.toLocaleDateString() > fechaVuelta.toLocaleDateString() ? fechaIda : fechaVuelta}
-                                onChange={(fecha) => setFechaVuelta(fecha)}
-                                minDate={subDays(fechaIda, 0)}
-                                ref={register}
-                                popperPlacement="bottom-end"
-                                popperModifiers={{
-                                  flip: {
-                                    behavior: ["bottom"] // don't allow it to flip to be above
-                                  },
-                                  preventOverflow: {
-                                    enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
-                                  },
-                                  hide: {
-                                    enabled: false // turn off since needs preventOverflow to be enabled
-                                  }
-                                }}
-                                dateFormat="d MMMM, yyyy"
-                                locale={language}
-                              />
-                              <img className="arrow" src={dropDownArrow} alt="" />
-                            </div>
-                          </label>
-                          <div className="error-container">
-                            {dateError ? <p>{texts[language]['index-10']}</p> : null}
-                          </div>
-                        </div>
-                        <div className="field-container small-field">
-                          <label htmlFor="hora-ida">
-                            {texts[language]['index-11']}
-                            <div className="custom-select-wrapper small-select-wrapper">
-                              <DatePicker
-                                id="time-picker-vuelta"
-                                name="hora-vuelta"
-                                selected={horaVuelta}
-                                onChange={(hora) => setHoraVuelta(hora)}
-                                ref={register}
-                                minTime={
-                                  fechaVuelta.toLocaleDateString() === fechaIda.toLocaleDateString()
-                                    ? horaIda
-                                    : undefined
-                                }
-                                maxTime={fechaVuelta.toLocaleDateString() === fechaIda.toLocaleDateString()
-                                  ? endOfDay(new Date())
-                                  : undefined
-                                }
-                                popperPlacement="bottom-end"
-                                popperModifiers={{
-                                  flip: {
-                                    behavior: ["bottom"] // don't allow it to flip to be above
-                                  },
-                                  preventOverflow: {
-                                    enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
-                                  },
-                                  hide: {
-                                    enabled: false // turn off since needs preventOverflow to be enabled
-                                  }
-                                }}
-                                locale={language}
-                                showTimeSelect
-                                showTimeSelectOnly
-                                dateFormat="h:mm aa"
-                                timeIntervals={15}
-                                timeCaption={texts[language]['index-6']}
-                              />
-                              <img className="arrow" src={dropDownArrow} alt="" />
-                            </div>
-                          </label>
-                          <div className="error-container">
-                            {timeError ? <p>{texts[language]['index-10']}</p> : null}
-                          </div>
-                        </div>
-                      </div>
-                    )
-                    : null
-                }
               </div>
-              <div className={tipoDeViaje === 'sencillo' ? "field-container" : 'field-container top-margin-60'}>
+              <div className={"field-container"}>
                 <input className="detail-submit mobile-submit" type="submit" value="Buscar" />
                 <div className="error-container" />
               </div>
@@ -463,21 +269,24 @@ const Home = (props) => {
           </div>
         </form>
       </div>
-      {
-        resultados && watchNumeroPasajeros < 10
-          ? <Resultados id="resultados" pasajeros={9} reservation={resultados} setVehicle={setVehicle} setPrice={setPrice} />
-          : null
-      }
-      {
-        resultados
-          ? <Resultados pasajeros={14} reservation={resultados} setVehicle={setVehicle} setPrice={setPrice} />
-          : null
-      }
-      {
-        resultados && watchNumeroPasajeros < 7
-          ? <Resultados pasajeros={6} reservation={resultados} setVehicle={setVehicle} setPrice={setPrice} />
-          : null
-      }
+      <div className="results-container">
+        {
+          resultados && watchNumeroPasajeros < 10
+            ? <Resultados id="resultados" pasajeros={9} reservation={resultados} setVehicle={setVehicle} setPrice={setPrice} />
+            : null
+        }
+        {
+          resultados
+            ? <Resultados pasajeros={14} reservation={resultados} setVehicle={setVehicle} setPrice={setPrice} />
+            : null
+        }
+        {
+          resultados && watchNumeroPasajeros < 7
+            ? <Resultados pasajeros={6} reservation={resultados} setVehicle={setVehicle} setPrice={setPrice} />
+            : null
+        }
+      </div>
+      <div style={{ height: 200, width: '100%' }}></div>
     </div>
   );
 };

@@ -9,7 +9,7 @@ import PaymentForm from '../components/PaymentForm';
 import { useContext } from 'react';
 
 const PaymentScreen = (props) => {
-  const { reservationData, vehicle, price } = props;
+  const { reservationData, vehicle, price, setPayment_Method } = props;
   const [isLoading, setIsLoading] = useState(false);
   const { pathname } = useLocation();
   const history = useHistory();
@@ -34,7 +34,7 @@ const PaymentScreen = (props) => {
         <DetallesDeCompra reservationData={reservationData} vehicle={vehicle} price={price} />
         <div className='payment-form-container'>
           <p><strong>{texts[language]['payscreen-0']}</strong></p>
-          <PaymentForm reservationData={reservationData} goToThankYou={goToThankYou} price={price} setIsLoading={setIsLoading} />
+          <PaymentForm reservationData={reservationData} goToThankYou={goToThankYou} price={price} setIsLoading={setIsLoading} setPayment_Method={setPayment_Method} />
         </div>
       </div>
     </LoadingOverlay>

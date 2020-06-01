@@ -1,4 +1,4 @@
-import car6 from '../assets/images/Suburban.jpg';
+import car6 from '../assets/images/Suburban.png';
 import car9 from '../assets/images/car9.png';
 import car14 from '../assets/images/car14.png';
 

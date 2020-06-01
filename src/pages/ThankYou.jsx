@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
 const ThankYou = (props) => {
+  const { language, payment_Method } = props;
   const history = useHistory();
   const [here, setHere] = useState('');
 
@@ -16,10 +17,27 @@ const ThankYou = (props) => {
     history.push('/');
   }
 
+  const imageId = (function getThankYouImageId() {
+    console.log('imageId lang -', language);
+    console.log('paymentMethod -', payment_Method)
+    if (language === 'es' && payment_Method === 'card') {
+      return 'paid-image-es'
+    }
+    if (language === 'es' && payment_Method === 'oxxo_cash') {
+      return 'oxxo-image-es'
+    }
+    if (language === 'en' && payment_Method === 'card') {
+      return 'paid-image-en'
+    }
+    if (language === 'en' && payment_Method === 'oxxo_cash') {
+      return 'oxxo-image-en'
+    }
+  }())
+
   return (
     <div id="thank-you" style={{ width: '100vw', height: '100vh' }}>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }} id="thank-you-img">
-        <button className="dark-button" style={{ marginBottom: 60 }} onClick={handleClick}>¡OK!</button>
+      <div className="thank-you-background" id={imageId}>
+        <button className="dark-button" style={{ position: 'absolute', bottom: 35, marginBottom: 60 }} onClick={handleClick}>¡OK!</button>
       </div>
     </div>
   );

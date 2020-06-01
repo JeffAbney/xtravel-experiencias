@@ -1,246 +1,175 @@
-const fromCancun = {
-  "Zona Hotelera Cancun":
-  {
-    "9": 585,
-    "14": 1053,
-    "6": 1160,
+const pricesFromCancunYPuertoMorelos = {
+  "Tulum Y Xelha": {
+    precios: {
+      "9": 4320,
+      "14": 7776,
+      "6": 8550,
+    },
+    duración: '12'
   },
-  "Centro De Cancun":
-  {
-    "9": 585,
-    "14": 1053,
-    "6": 1160
+  "Tulum": {
+    precios: {
+      "9": 3200,
+      "14": 5760,
+      "6": 6336,
+    },
+    duración: '6'
   },
-  "Playa Mujeres": {
-    "9": 1050,
-    "14": 1890,
-    "6": 2079
-  },
-  "Puerto Juarez": {
-    "9": 730,
-    "14": 1314,
-    "6": 1445
-  },
-  "Puerto Morelos": {
-    "9": 730,
-    "14": 1314,
-    "6": 1445
-  },
-  "Playa Del Carmen": {
-    "9": 1040,
-    "14": 1872,
-    "6": 2059
-  },
-  "Puerto Aventuras": {
-    "9": 1350,
-    "14": 2430,
-    "6": 2673
-  },
-  "Akumal": {
-    "9": 1550,
-    "14": 2790,
-    "6": 3069
-  },
-  "Zona Hotelera De Tulum": {
-    "9": 1680,
-    "14": 3024,
-    "6": 3325
-  },
-  "Chiquila": {
-    "9": 3450,
-    "14": 6210,
-    "6": 6831
-  },
-  "Valladolid": {
-    "9": 2550,
-    "14": 4590,
-    "6": 5049
-  },
-  "Merida": {
-    "9": 4760,
-    "14": 8568,
-    "6": 9100
-  },
-  "Chetumal": {
-    "9": 5450,
-    "14": 9810,
-    "6": 10791
-  },
-  "Bacalar": {
-    "9": 5300,
-    "14": 9540,
-    "6": 10494
-  }
-}
-
-
-const fromMerida = {
-  "Merida Zona Aeropuerto": {
-    "9": 230,
-    "14": 414,
-    "6": 460
-  },
-  "Merida Zona Centro": {
-    "9": 360,
-    "14": 648,
-    "6": 710
-  },
-  "Merida Zona Segundo Cuadro": {
-    "9": 400,
-    "14": 720,
-    "6": 792
-  },
-  "Merida Zona Colonias": {
-    "9": 460,
-    "14": 828,
-    "6": 910
-  },
-  "Merida Zona Periferia": {
-    "9": 550,
-    "14": 990,
-    "6": 1090
-  },
-  "Merida Zona Alrededores": {
-    "9": 670,
-    "14": 1206,
-    "6": 1350,
-  },
-  "Progreso": {
-    "9": 780,
-    "14": 1404,
-    "6": 1550
-  },
-  "Celestun": {
-    "9": 1224,
-    "14": 2203,
-    "6": 2420
-  },
-  "Motul": {
-    "9": 780,
-    "14": 1404,
-    "6": 1550
-  },
-  "Ticul": {
-    "9": 1260,
-    "14": 2268,
-    "6": 2495
-  },
-  "Campeche": {
-    "9": 3000,
-    "14": 5400,
-    "6": 5940
+  "Xcaret": {
+    precios: {
+      "9": 3800,
+      "14": 6840,
+      "6": 7524,
+    },
+    duración: '12'
   },
   "Chichen Itza": {
-    "9": 1824,
-    "14": 3283.2,
-    "6": 3610
+    precios: {
+      "9": 4550,
+      "14": 8190,
+      "6": 9000,
+    },
+    duración: '12'
   },
-  "Uxmal": {
-    "9": 1380,
-    "14": 2484,
-    "6": 2730
-  },
-  "Valladolid": {
-    "9": 2280,
-    "14": 4104,
-    "6": 4515
-  },
-  "Tizimin": {
-    "9": 2880,
-    "14": 5184,
-    "6": 5700
-  },
-  "Chiquila": {
-    "9": 4560,
-    "14": 8208,
-    "6": 9030
-  },
-  "Izamal": {
-    "9": 1344,
-    "14": 2419.2,
-    "6": 2660
-  },
-  "Coloradas": {
-    "9": 3936,
-    "14": 7084.8,
-    "6": 7790
-  },
-  "Rio Lagartos": {
-    "9": 3660,
-    "14": 6588,
-    "6": 7250
-  },
-  "Chuburna Puerto": {
-    "9": 960,
-    "14": 1728,
-    "6": 1900
-  },
-  "Chelem": {
-    "9": 900,
-    "14": 1620,
-    "6": 1782
-  },
-  "Oxkutzcab": {
-    "9": 1560,
-    "14": 2808,
-    "6": 3090
-  },
-  "Chicxulub": {
-    "9": 840,
-    "14": 1512,
-    "6": 1660
-  },
-  "Sisal": {
-    "9": 840,
-    "14": 1512,
-    "6": 1660
-  },
-  "Zona Hotelera Cancun": {
-    "9": 4760,
-    "14": 8568,
-    "6": 9425
-  },
-  "Playa Mujeres": {
-    "9": 4990,
-    "14": 8982,
-    "6": 9880
-  },
-  "Puerto Juarez": {
-    "9": 4990,
-    "14": 8982,
-    "6": 9880
-  },
-  "Puerto Morelos": {
-    "9": 5150,
-    "14": 9270,
-    "6": 10197
-  },
-  "Playa Del Carmen": {
-    "9": 4760,
-    "14": 8568,
-    "6": 9425
-  },
-  "Puerto Aventuras": {
-    "9": 4990,
-    "14": 8982,
-    "6": 9880
-  },
-  "Akumal": {
-    "9": 5150,
-    "14": 9270,
-    "6": 10197
-  },
-  "Tankah": {
-    "9": 5310,
-    "14": 9558,
-    "6": 10514
-  },
-  "Zona Hotelera De Tulum": {
-    "9": 5580,
-    "14": 10044,
-    "6": 11048
-  }
 }
 
-export { fromCancun, fromMerida }
+const pricesFromPlayaDelCarmen = {
+  "Tulum Y Xelha": {
+    precios: {
+      "9": 3720,
+      "14": 6696,
+      "6": 7365,
+    },
+    duración: '12'
+  },
+  "Tulum": {
+    precios: {
+      "9": 2700,
+      "14": 4860,
+      "6": 5346,
+    },
+    duración: '6'
+  },
+  "Xcaret": {
+    precios: {
+      "9": 3300,
+      "14": 5940,
+      "6": 6534,
+    },
+    duración: '12'
+  },
+  "Chichen Itza": {
+    precios: {
+      "9": 4550,
+      "14": 8190,
+      "6": 9009,
+    },
+    duración: '12'
+  },
+}
+
+const pricesFromPuertoAventurasAkumalTulum = {
+  "Tulum Y Xelha": {
+    precios: {
+      "9": 3348,
+      "14": 6025,
+      "6": 6625,
+    },
+    duración: '12'
+  },
+  "Tulum": {
+    precios: {
+      "9": 2430,
+      "14": 4374,
+      "6": 4810,
+    },
+    duración: '6'
+  },
+  "Xcaret": {
+    precios: {
+      "9": 2970,
+      "14": 5346,
+      "6": 5880,
+    },
+    duración: '12'
+  },
+  "Chichen Itza": {
+    precios: {
+      "9": 5005,
+      "14": 9009,
+      "6": 9900,
+    },
+    duración: '12'
+  },
+}
+
+
+const pricesFromMerida = {
+  "Celestun": {
+    precios: {
+      "9": 2200,
+      "14": 3960,
+      "6": 4356,
+    },
+    duración: '8'
+  },
+  "Progreso": {
+    precios: {
+      "9": 1750,
+      "14": 3150,
+      "6": 3465,
+    },
+    duración: '8'
+  },
+  "Sisal": {
+    precios: {
+      "9": 1900,
+      "14": 3420,
+      "6": 3762,
+    },
+    duración: '8'
+  },
+  "Valladolid": {
+    precios: {
+      "9": 3100,
+      "14": 5580,
+      "6": 6138,
+    },
+    duración: '6'
+  },
+  "Chichen Itza": {
+    precios: {
+      "9": 2700,
+      "14": 4860,
+      "6": 5346,
+    },
+    duración: '6'
+  },
+  "Uxmal": {
+    precios: {
+      "9": 2200,
+      "14": 3960,
+      "6": 4356,
+    },
+    duración: '6'
+  },
+  "Coloradas": {
+    precios: {
+      "9": 4700,
+      "14": 8460,
+      "6": 9306,
+    },
+    duración: '10'
+  },
+  "Izamal": {
+    precios: {
+      "9": 2400,
+      "14": 4320,
+      "6": 4752,
+    },
+    duración: '6'
+  },
+}
+
+export { pricesFromCancunYPuertoMorelos, pricesFromPlayaDelCarmen, pricesFromPuertoAventurasAkumalTulum, pricesFromMerida }
 

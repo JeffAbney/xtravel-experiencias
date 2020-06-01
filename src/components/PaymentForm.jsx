@@ -6,7 +6,7 @@ import makePurchase from '../utils/makePurchase';
 import paymentFieldsList from '../constants/paymentFieldsList';
 
 const PaymentForm = (props) => {
-  const { reservationData, ScrollToTop, goToThankYou, price, setIsLoading } = props;
+  const { reservationData, ScrollToTop, goToThankYou, price, setIsLoading, setPayment_Method } = props;
   const { tipoDeViaje } = reservationData;
   const { language } = useContext(LanguageContext);
   const { register, handleSubmit, watch, errors } = useForm();
@@ -55,6 +55,7 @@ const PaymentForm = (props) => {
 
   const onSubmit = () => {
     setIsLoading(true);
+    setPayment_Method(watchPaymentMethod);
     makePurchase(fullReservationData, goToThankYou);
   }
 
@@ -127,51 +128,12 @@ const PaymentForm = (props) => {
       </div>
 
       <div className="payment-form-section">
-        <h1 className="payment-form-section-title">{texts[language]['payform-13a']}{tipoDeViaje === 'sencillo' ? null : texts[language]['payform-13b']}</h1>
-        <label className="third">
-          <h2 className="payment-form-field-title">{texts[language]['payform-14']}</h2>
-          <input type="text" size="20" name="airlineTo" ref={register({ required: true })} />
-        </label>
-        <label className="third">
-          <h2 className="payment-form-field-title">{texts[language]['payform-15']}</h2>
-          <input type="text" size="10" name="flightNumTo" ref={register({ required: true })} />
-        </label>
-        <label className="third">
-          <h2 className="payment-form-field-title">{texts[language]['payform-16']}</h2>
-          <input type="text" size="60" name="flightTimeTo" ref={register({ required: true })} />
-        </label>
-      </div>
-
-      {
-        tipoDeViaje === 'sencillo'
-          ? null
-          : (
-            <div className="payment-form-section">
-              <h1 className="payment-form-section-title">{texts[language]['payform-17']}{tipoDeViaje === 'sencillo' ? null : texts[language]['payform-18']}</h1>
-              <label className="third">
-                <h2 className="payment-form-field-title">{texts[language]['payform-19']}</h2>
-                <input type="text" size="20" name="airlineFrom" ref={register({ required: true })} />
-              </label>
-              <label className="third">
-                <h2 className="payment-form-field-title">{texts[language]['payform-20']}</h2>
-                <input type="text" size="10" name="flightNumberFrom" ref={register({ required: true })} />
-              </label>
-              <label className="third">
-                <h2 className="payment-form-field-title">{texts[language]['payform-21']}</h2>
-                <input type="text" size="60" name="flightTimeFrom" ref={register({ required: true })} />
-              </label>
-            </div>
-          )
-      }
-
-      <div className="payment-form-section">
         <h1 className="payment-form-section-title">{texts[language]['payform-22']}</h1>
 
         <label>
           <h2 className="payment-form-field-title">{texts[language]['payform-23']}</h2>
           <input type="text" size="20" name="phone" ref={register({ required: true })} />
         </label>
-
 
         <label>
           <h2 className="payment-form-field-title">{texts[language]['payform-24']}</h2>
