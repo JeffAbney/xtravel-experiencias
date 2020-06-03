@@ -7,9 +7,9 @@ const ThankYou = (props) => {
   const [here, setHere] = useState('');
 
   useEffect(function scrollToThankYou() {
-    const thankYou = document.getElementById("thank-you-img");
+    const thankYou = document.getElementsByClassName("thank-you-background")[0];
     if (thankYou) {
-      document.getElementById("thank-you-img").scrollIntoView({ behavior: "smooth", block: "center" });
+      thankYou.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   })
 
@@ -35,7 +35,7 @@ const ThankYou = (props) => {
   return (
     <div id="thank-you" style={{ width: '100vw', height: '100vh' }}>
       <div className="thank-you-background" id={imageId}>
-        <button className="dark-button" style={{ position: 'absolute', bottom: 35, marginBottom: 60 }} onClick={handleClick}>¡OK!</button>
+        <button className="dark-button" style={{ maxWidth: '30%', display: 'block', marginLeft: 'auto', marginRight: 'auto', marginTop: '35%' }} onClick={handleClick}>¡OK!</button>
       </div>
     </div>
   );
