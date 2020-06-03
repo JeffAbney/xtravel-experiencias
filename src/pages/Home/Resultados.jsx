@@ -84,7 +84,6 @@ const Resultados = (props) => {
   }());
 
   const excursion = (function getPrice() {
-    console.log('getPrice destino -', destino)
     if (origen === 'Cancun' || origen === 'Puerto Morelos') {
       return pricesFromCancunYPuertoMorelos;
     }
@@ -106,7 +105,7 @@ const Resultados = (props) => {
   }());
 
   const price = excursion[destino].precios[pasajeros];
-  const duration = excursion[destino].duration;
+  const duration = excursion[destino].duración;
 
   return (
     <div className="results-box" id={id}>
