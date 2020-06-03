@@ -38,7 +38,7 @@ const Home = (props) => {
   const { register, handleSubmit, watch, errors } = useForm();
   const { language, setLanguage } = useContext(LanguageContext);
   const [resultados, setResultados] = useState(null);
-  const [fechaIda, setFechaIda] = useState(addDays(new Date(), 1));
+  const [fechaIda, setFechaIda] = useState(addDays(new Date(), 2));
   const [horaIda, setHoraIda] = useState(new Date());
   const [fechaVuelta, setFechaVuelta] = useState(new Date());
   const [horaVuelta, setHoraVuelta] = useState(new Date());
@@ -172,7 +172,7 @@ const Home = (props) => {
                           name="fecha-ida"
                           selected={fechaIda}
                           onChange={(fecha) => handleChangeFechaIda(fecha)}
-                          minDate={addDays(new Date(), 1)}
+                          minDate={addDays(new Date(), 2)}
                           ref={register}
                           popperPlacement="bottom-end"
                           popperModifiers={{
