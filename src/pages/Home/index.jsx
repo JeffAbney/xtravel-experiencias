@@ -129,146 +129,149 @@ const Home = (props) => {
 
   return (
     <div className="react-app">
-      <div className="booking-box">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="background-container">
+        <div className="booking-box">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
 
-            <div className="transport-details-container">
-              <div>
-                <div className="transport-fields">
-                  <div className="field-container">
-                    <label id="index-2" name="label-origen" htmlFor="origen">
-                      {texts[language]['index-2']}
-                      <div className="custom-select-wrapper">
-                        <input autoComplete="off" placeholder={texts[language]['index-12']} list="origin" aria-labelledby="label-origen" className="custom-arrow detail-input" name="origen" ref={register({ required: true })} />
+              <div className="transport-details-container">
+                <div>
+                  <div className="transport-fields">
+                    <div className="field-container">
+                      <label id="index-2" name="label-origen" htmlFor="origen">
+                        {texts[language]['index-2']}
+                        <div className="custom-select-wrapper">
+                          <input autoComplete="off" placeholder={texts[language]['index-12']} list="origin" aria-labelledby="label-origen" className="custom-arrow detail-input" name="origen" ref={register({ required: true })} />
 
-                        <datalist id="origin">
-                          {excursionOrigins.map((origen) => <option key={`origen-${origen}`} value={origen}>{origen}</option>)}
-                        </datalist>
-                      </div>
-                    </label>
-                    <div className="error-container">{errors.origen && texts[language]['index-14']}</div>
-                  </div>
+                          <datalist id="origin">
+                            {excursionOrigins.map((origen) => <option key={`origen-${origen}`} value={origen}>{origen}</option>)}
+                          </datalist>
+                        </div>
+                      </label>
+                      <div className="error-container">{errors.origen && texts[language]['index-14']}</div>
+                    </div>
 
-                  <div className="field-container">
-                    <label htmlFor="destino">
-                      {texts[language]['index-3']}
-                      <div className="custom-select-wrapper">
-                        <input autoComplete="off" placeholder={texts[language]['index-13']} list="destino" className="custom-arrow detail-input" name="destino" ref={register({ required: true })} />
-                        <datalist id="destino">
-                          {showDestinations(watchOrigen)}
-                        </datalist>
-                      </div>
-                    </label>
-                    <div className="error-container">{errors.destino && texts[language]['index-14']}</div>
-                  </div>
+                    <div className="field-container">
+                      <label htmlFor="destino">
+                        {texts[language]['index-3']}
+                        <div className="custom-select-wrapper">
+                          <input autoComplete="off" placeholder={texts[language]['index-13']} list="destino" className="custom-arrow detail-input" name="destino" ref={register({ required: true })} />
+                          <datalist id="destino">
+                            {showDestinations(watchOrigen)}
+                          </datalist>
+                        </div>
+                      </label>
+                      <div className="error-container">{errors.destino && texts[language]['index-14']}</div>
+                    </div>
 
-                  <div className="field-container">
-                    <label htmlFor="fecha-ida">
-                      {texts[language]['index-4']}:
+                    <div className="field-container">
+                      <label htmlFor="fecha-ida">
+                        {texts[language]['index-4']}:
                     <div className="custom-select-wrapper">
-                        <DatePicker
-                          id="date-picker-ida"
-                          name="fecha-ida"
-                          selected={fechaIda}
-                          onChange={(fecha) => handleChangeFechaIda(fecha)}
-                          minDate={addDays(new Date(), 2)}
-                          ref={register}
-                          popperPlacement="bottom-end"
-                          popperModifiers={{
-                            flip: {
-                              behavior: ["bottom"] // don't allow it to flip to be above
-                            },
-                            preventOverflow: {
-                              enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
-                            },
-                            hide: {
-                              enabled: false // turn off since needs preventOverflow to be enabled
-                            }
-                          }}
-                          dateFormat="d MMMM, yyyy"
-                          locale={language}
-                        />
-                        <img className="arrow" src={dropDownArrow} alt="" />
-                      </div>
-                    </label>
-                    <div className="error-container" />
+                          <DatePicker
+                            id="date-picker-ida"
+                            name="fecha-ida"
+                            selected={fechaIda}
+                            onChange={(fecha) => handleChangeFechaIda(fecha)}
+                            minDate={addDays(new Date(), 2)}
+                            ref={register}
+                            popperPlacement="bottom-end"
+                            popperModifiers={{
+                              flip: {
+                                behavior: ["bottom"] // don't allow it to flip to be above
+                              },
+                              preventOverflow: {
+                                enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
+                              },
+                              hide: {
+                                enabled: false // turn off since needs preventOverflow to be enabled
+                              }
+                            }}
+                            dateFormat="d MMMM, yyyy"
+                            locale={language}
+                          />
+                          <img className="arrow" src={dropDownArrow} alt="" />
+                        </div>
+                      </label>
+                      <div className="error-container" />
 
-                  </div>
+                    </div>
 
-                  <div className="field-container small-field">
-                    <label htmlFor="hora-ida">
-                      {texts[language]['index-5']}:
+                    <div className="field-container small-field">
+                      <label htmlFor="hora-ida">
+                        {texts[language]['index-5']}:
                     <div className="custom-select-wrapper">
-                        <DatePicker
-                          id="time-picker-ida"
-                          name="hora-ida"
-                          minTime={minTime}
-                          maxTime={endOfDay(new Date())}
-                          timeIntervals={15}
-                          selected={horaIda}
-                          onChange={(hora) => handleChangeHoraIda(hora)}
-                          ref={register}
-                          popperPlacement="bottom-end"
-                          popperModifiers={{
-                            flip: {
-                              behavior: ["bottom"] // don't allow it to flip to be above
-                            },
-                            preventOverflow: {
-                              enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
-                            },
-                            hide: {
-                              enabled: false // turn off since needs preventOverflow to be enabled
-                            }
-                          }}
-                          locale={language}
-                          showTimeSelect
-                          showTimeSelectOnly
-                          dateFormat="h:mm aa"
-                          timeCaption={texts[language]['index-6']}
-                        />
-                        <img className="arrow" src={dropDownArrow} alt="" />
-                      </div>
-                    </label>
-                    <div className="error-container" />
-                  </div>
+                          <DatePicker
+                            id="time-picker-ida"
+                            name="hora-ida"
+                            minTime={minTime}
+                            maxTime={endOfDay(new Date())}
+                            timeIntervals={15}
+                            selected={horaIda}
+                            onChange={(hora) => handleChangeHoraIda(hora)}
+                            ref={register}
+                            popperPlacement="bottom-end"
+                            popperModifiers={{
+                              flip: {
+                                behavior: ["bottom"] // don't allow it to flip to be above
+                              },
+                              preventOverflow: {
+                                enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
+                              },
+                              hide: {
+                                enabled: false // turn off since needs preventOverflow to be enabled
+                              }
+                            }}
+                            locale={language}
+                            showTimeSelect
+                            showTimeSelectOnly
+                            dateFormat="h:mm aa"
+                            timeCaption={texts[language]['index-6']}
+                          />
+                          <img className="arrow" src={dropDownArrow} alt="" />
+                        </div>
+                      </label>
+                      <div className="error-container" />
+                    </div>
 
-                  <div className="field-container small-field">
-                    <label htmlFor="numeroPasajeros">
-                      {texts[language]['index-7']}
-                      <div className="custom-select-wrapper">
-                        <select className="custom-arrow detail-input" name="numeroPasajeros" ref={register}>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>
-                        </select>
-                        <img className="arrow" src={dropDownArrow} alt="" />
-                      </div>
-                    </label>
-                    <div className="error-container" />
+                    <div className="field-container small-field">
+                      <label htmlFor="numeroPasajeros">
+                        {texts[language]['index-7']}
+                        <div className="custom-select-wrapper">
+                          <select className="custom-arrow detail-input" name="numeroPasajeros" ref={register}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                          </select>
+                          <img className="arrow" src={dropDownArrow} alt="" />
+                        </div>
+                      </label>
+                      <div className="error-container" />
+                    </div>
                   </div>
                 </div>
+                <div className={"field-container"}>
+                  <input className="detail-submit mobile-submit" type="submit" value="Buscar" />
+                  <div className="error-container" />
+                </div>
               </div>
-              <div className={"field-container"}>
-                <input className="detail-submit mobile-submit" type="submit" value="Buscar" />
-                <div className="error-container" />
-              </div>
-            </div>
 
-          </div>
-        </form>
+            </div>
+          </form>
+        </div>
       </div>
+
       <div className="results-container">
         {
           resultados && watchNumeroPasajeros < 10
@@ -286,7 +289,6 @@ const Home = (props) => {
             : null
         }
       </div>
-      <div style={{ height: 200, width: '100%' }}></div>
     </div>
   );
 };

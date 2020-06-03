@@ -36,7 +36,6 @@ small {
 .react-app {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
   width: 100vw;
 }
@@ -71,6 +70,20 @@ button:hover {
 
 .row {
   display: flex;
+}
+
+.background-container {
+  width: 100vw;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: url("../src/assets/images/Cenote.JPG");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .detail-submit {
@@ -179,9 +192,9 @@ label {
 
 .booking-box {
   background-color: var(--blue);
-  width: 95%;
+  width: 90%;
   border-radius: 25px;
-  padding: 15px 60px 60px 70px;
+  padding: 60px 60px 60px 70px;
 }
 
 .field-container {
@@ -276,7 +289,7 @@ label {
   flex-direction: column;
   width: 30%;
   max-width: 300px;
-  height: 420px;
+  height: 450px;
   justify-content: flex-start;
   align-items: center;
   border-style: solid;

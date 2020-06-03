@@ -1,7 +1,7 @@
 {
   "name": "xtravel_app",
   "version": "0.1.0",
-  "homepage": "http://xtravel.mx/ExcursionsAppEs",
+  "homepage": "http://xtravel.mx/ExcursionsAppEn",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
