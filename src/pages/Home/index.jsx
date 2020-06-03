@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import { isSameDay, startOfToday, endOfDay } from 'date-fns'
 import es from "date-fns/locale/es";
-import subDays from "date-fns/subDays";
+import addDays from "date-fns/addDays";
 import texts from '../../constants/texts';
 import { LanguageContext } from '../../components/LanguageContext';
 
@@ -38,7 +38,7 @@ const Home = (props) => {
   const { register, handleSubmit, watch, errors } = useForm();
   const { language, setLanguage } = useContext(LanguageContext);
   const [resultados, setResultados] = useState(null);
-  const [fechaIda, setFechaIda] = useState(new Date());
+  const [fechaIda, setFechaIda] = useState(addDays(new Date(), 1));
   const [horaIda, setHoraIda] = useState(new Date());
   const [fechaVuelta, setFechaVuelta] = useState(new Date());
   const [horaVuelta, setHoraVuelta] = useState(new Date());
@@ -172,7 +172,7 @@ const Home = (props) => {
                           name="fecha-ida"
                           selected={fechaIda}
                           onChange={(fecha) => handleChangeFechaIda(fecha)}
-                          minDate={subDays(new Date(), 0)}
+                          minDate={addDays(new Date(), 1)}
                           ref={register}
                           popperPlacement="bottom-end"
                           popperModifiers={{
