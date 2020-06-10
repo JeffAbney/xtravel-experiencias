@@ -1,6 +1,6 @@
 const conektaHelper = {
     initConekta: () => {
-        window.Conekta.setPublicKey('key_OoyEzSo6y9x8pMLtJzszpCQ')
+        window.Conekta.setPublicKey('key_ZoyziVwubXDKdS1LwF9jKYg');
     },
     getCardBrand: (cardNumber) => {
         return window.Conekta.card.getBrand(cardNumber)

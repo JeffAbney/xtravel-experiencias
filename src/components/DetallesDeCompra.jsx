@@ -33,7 +33,7 @@ const DetallesDeCompra = (props) => {
         <p>{numeroPasajeros > 1 ? `${numeroPasajeros} ${texts[language]['details-7a']}` : texts[language]['details-7b']}</p>
         <div className="row" style={{ justifyContent: 'space-between', marginTop: 5 }}>
           <h3><strong>{texts[language]['details-8']}</strong></h3>
-          <p style={{ fontSize: '2.1rem' }}><strong>${price}</strong><small> MXN</small></p>
+          <p style={{ fontSize: '2.1rem' }}><strong>${price.toLocaleString()}</strong><small> MXN</small></p>
         </div>
 
       </div>
