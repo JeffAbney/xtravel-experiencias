@@ -24,8 +24,8 @@ export default function App() {
       <Router>
         <div>
           <Switch>
-            {/* path for ES app   transporte-para-excursiones || path for EN app   excursion-transportation*/}
-            <Route path="/excursion-transportation" exact render={(props) => <Home {...props} setReservationData={setReservationData} setVehicle={setVehicle} setPrice={setPrice} />} />
+            {/* path for ES app   experiencias || path for EN app   experiences */}
+            <Route path="/experiencias" exact render={(props) => <Home {...props} setReservationData={setReservationData} setVehicle={setVehicle} setPrice={setPrice} />} />
             <Route path="/infoDeReserva" exact component={(props) => <PaymentScreen {...props} key={window.location.pathname} reservationData={reservationData} setReservationData={setReservationData} vehicle={vehicle} price={price} setPayment_Method={setPayment_Method} />} />
             <Route path="/thankYou" exact component={(props) => <ThankYou {...props} payment_Method={payment_Method} language={language} />} />
           </Switch>
