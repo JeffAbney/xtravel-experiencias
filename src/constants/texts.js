@@ -5,7 +5,7 @@ const texts = {
     'index-0': 'Desde Cancún',
     'index-1': 'Desde Mérida',
     'index-2': 'Desde: ',
-    'index-3': 'Destino de excusión: ',
+    'index-3': 'Tipo de experiencia: ',
     'index-4': 'Fecha',
     'index-4a': ' de ida',
     'index-5': 'Hora',
@@ -17,7 +17,7 @@ const texts = {
     'index-10': 'Escoge una fecha despúes de la ida.',
     'index-11': 'Hora',
     'index-12': 'Desde',
-    'index-13': 'Mi destino',
+    'index-13': 'Mi Experiencia',
     'index-14': 'Favor de llenar este campo',
     'resultados-0': 'Solo ida',
     'resultados-1': 'Ida y Vuelta',
@@ -70,13 +70,15 @@ const texts = {
     'details-7a': 'pasajeros',
     'details-7b': '1 pasajero',
     'details-8': 'Precio: ',
+    'upsell-0a': 'Agregar',
+    'upsell-0b': 'No gracias'
   },
   'en': {
     'index-v': 'Please choose a value form the list.',
     'index-0': 'One Way',
     'index-1': 'Round Trip ',
     'index-2': 'From: ',
-    'index-3': 'To: ',
+    'index-3': 'Type of Experience: ',
     'index-4': 'Date',
     'index-4a': ' leaving',
     'index-5': 'Time',
@@ -88,7 +90,7 @@ const texts = {
     'index-10': 'Choose a date after your departure.',
     'index-11': 'Time',
     'index-12': 'From',
-    'index-13': 'My destination',
+    'index-13': 'My Experience',
     'index-14': 'Please fill out this field',
     'resultados-0': 'One Way',
     'resultados-1': 'Round Trip',
@@ -141,6 +143,9 @@ const texts = {
     'details-7a': 'passengers',
     'details-7b': '1 passenger',
     'details-8': 'Price: ',
+    'upsell-0a': 'Add',
+    'upsell-0b': 'No thanks'
+
   }
 }
 

@@ -18,14 +18,12 @@ import {
   excursionsFromMerida,
 } from '../../constants/destinos';
 import excursionOrigins from '../../constants/origins';
+import UpsellWindow from '../../components/UpsellWindow';
 
 registerLocale("es", es);
 
 const unfilteredAllPlaces = [
-  'Aeropuerto Cancún',
-  'Aeropuerto Mérida',
   ...excursionsFromCancun,
-  ...excursionsFromMerida,
 ];
 
 function onlyUnique(value, index, self) {
@@ -34,7 +32,7 @@ function onlyUnique(value, index, self) {
 const allPlaces = unfilteredAllPlaces.filter(onlyUnique);
 
 const Home = (props) => {
-  const { setPrice, setReservationData, vehicle, setVehicle } = props;
+  const { price, setPrice, reservationData, setReservationData, vehicle, setVehicle } = props;
   const { register, handleSubmit, watch, errors } = useForm();
   const { language, setLanguage } = useContext(LanguageContext);
   const [resultados, setResultados] = useState(null);
@@ -42,6 +40,7 @@ const Home = (props) => {
   const [horaIda, setHoraIda] = useState(new Date());
   const [fechaVuelta, setFechaVuelta] = useState(new Date());
   const [horaVuelta, setHoraVuelta] = useState(new Date());
+  const [upsell, setUpsell] = useState(false);
   const watchOrigen = watch('origen');
   const watchDestino = watch('destino');
   const watchNumeroPasajeros = watch('numeroPasajeros', '1');
@@ -275,20 +274,27 @@ const Home = (props) => {
       <div className="results-container">
         {
           resultados && watchNumeroPasajeros < 10
-            ? <Resultados id="resultados" pasajeros={9} reservation={resultados} setVehicle={setVehicle} setPrice={setPrice} />
+            ? <Resultados id="resultados" pasajeros={9} reservation={resultados} setUpsell={setUpsell} setVehicle={setVehicle} setPrice={setPrice} />
             : null
         }
         {
           resultados
-            ? <Resultados pasajeros={14} reservation={resultados} setVehicle={setVehicle} setPrice={setPrice} />
+            ? <Resultados pasajeros={14} reservation={resultados} setUpsell={setUpsell} setVehicle={setVehicle} setPrice={setPrice} />
             : null
         }
         {
           resultados && watchNumeroPasajeros < 7
-            ? <Resultados pasajeros={6} reservation={resultados} setVehicle={setVehicle} setPrice={setPrice} />
+            ? <Resultados pasajeros={6} reservation={resultados} setUpsell={setUpsell} setVehicle={setVehicle} setPrice={setPrice} />
             : null
         }
       </div>
+      {upsell
+        ? (
+          <div style={{ zIndex: 1, position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
+            <UpsellWindow reservationData={reservationData} setReservationData={setReservationData} price={price} setPrice={setPrice} setUpsell={setUpsell} />
+          </div>
+        )
+        : null}
     </div>
   );
 };

@@ -1,5 +1,5 @@
-const pricesFromCancunYPuertoMorelos = {
-  "Tulum Y Xelha": {
+const pricesFromCancun = {
+  "Salón de Belleza": {
     precios: {
       "9": 4320,
       "14": 7776,
@@ -7,7 +7,7 @@ const pricesFromCancunYPuertoMorelos = {
     },
     duración: '12'
   },
-  "Tulum": {
+  "Tour en Moto": {
     precios: {
       "9": 3200,
       "14": 5760,
@@ -15,19 +15,11 @@ const pricesFromCancunYPuertoMorelos = {
     },
     duración: '6'
   },
-  "Xcaret": {
+  "Viaje de Snorkel": {
     precios: {
       "9": 3800,
       "14": 6840,
       "6": 7524,
-    },
-    duración: '12'
-  },
-  "Chichen Itza": {
-    precios: {
-      "9": 4550,
-      "14": 8190,
-      "6": 9000,
     },
     duración: '12'
   },
@@ -171,5 +163,5 @@ const pricesFromMerida = {
   },
 }
 
-export { pricesFromCancunYPuertoMorelos, pricesFromPlayaDelCarmen, pricesFromPuertoAventurasAkumalTulum, pricesFromMerida }
+export { pricesFromCancun, pricesFromPlayaDelCarmen, pricesFromPuertoAventurasAkumalTulum, pricesFromMerida }
 

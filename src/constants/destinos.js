@@ -5,10 +5,9 @@ function correctCase(unformattedPlaceArr) {
 }
 
 const excursionsFromCancun = [
-  "Tulum Y Xelha",
-  "Tulum",
-  "Xcaret",
-  "Chichen Itza",
+  "Salón de Belleza",
+  "Tour en Moto",
+  "Viaje de Snorkel",
 ];
 
 // const fromAeropuertoCancun = correctCase(fromAeropuertoCancunNotFormatted);

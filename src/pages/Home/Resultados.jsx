@@ -8,12 +8,8 @@ import PropTypes, {
 import { LanguageContext } from '../../components/LanguageContext';
 import texts from '../../constants/texts'
 import car from '../../utils/getCar';
-import car6 from '../../assets/images/Suburban.png';
-import dot from '../../assets/icons/Oval.png';
-import line from '../../assets/icons/Line.png';
-import person from '../../assets/icons/passengers.png';
 import {
-  pricesFromCancunYPuertoMorelos,
+  pricesFromCancun,
   pricesFromPlayaDelCarmen,
   pricesFromPuertoAventurasAkumalTulum,
   pricesFromMerida
@@ -33,7 +29,7 @@ import imgXcaret from '../../assets/images/Xcaret.jpg';
 require('dotenv').config();
 
 const Resultados = (props) => {
-  const { reservation, pasajeros, id, setVehicle, setPrice } = props;
+  const { reservation, pasajeros, id, setVehicle, setPrice, setUpsell } = props;
   const {
     origen,
     destino,
@@ -42,9 +38,9 @@ const Resultados = (props) => {
   const { language, setLanguage } = useContext(LanguageContext);
 
   function goToForm() {
+    setUpsell(true);
     setVehicle(car(pasajeros));
     setPrice(price);
-    history.push('/infoDeReserva');
   }
 
   const destinoImage = (function getImage() {
@@ -84,23 +80,8 @@ const Resultados = (props) => {
   }());
 
   const excursion = (function getPrice() {
-    if (origen === 'Cancun' || origen === 'Puerto Morelos') {
-      return pricesFromCancunYPuertoMorelos;
-    }
-    if (origen === 'Playa Del Carmen') {
-      return pricesFromPlayaDelCarmen;
-    }
-    if (
-      origen === 'Puerto Aventuras' ||
-      origen === 'Akumal' ||
-      origin === 'Tulum'
-    ) {
-      return pricesFromPuertoAventurasAkumalTulum;
-    }
-    if (origen === 'Merida') {
-      return pricesFromMerida;
-    } else {
-      console.log('origen', origen);
+    if (origen === 'Cancun') {
+      return pricesFromCancun;
     }
   }());
 
@@ -125,6 +106,7 @@ const Resultados = (props) => {
       <div style={{ width: '100%', backgroundColor: '#000', paddingBottom: 1, marginTop: 25, marginBottom: 15 }} />
       <p className="result-detail">{pasajeros} {texts[language]['resultados-4']}</p>
       <p className="result-detail">{texts[language]['resultados-6a']} {duration} {texts[language]['resultados-6b']}</p>
+
     </div >
   );
 };
