@@ -14,16 +14,16 @@ import dropDownArrow from '../../assets/icons/dropdown_arrow.png';
 import checkSpace from '../../assets/icons/check_Space.png';
 import checkMark from '../../assets/icons/Checkmark.png';
 import {
-  excursionsFromCancun,
-  excursionsFromMerida,
+  experiencesFromCancun,
 } from '../../constants/destinos';
 import excursionOrigins from '../../constants/origins';
 import UpsellWindow from '../../components/UpsellWindow';
+import inputListValueValidator from '../../utils/inputListValueValidator';
 
 registerLocale("es", es);
 
 const unfilteredAllPlaces = [
-  ...excursionsFromCancun,
+  ...experiencesFromCancun,
 ];
 
 function onlyUnique(value, index, self) {
@@ -35,15 +35,10 @@ const Home = (props) => {
   const { price, setPrice, reservationData, setReservationData, vehicle, setVehicle } = props;
   const { register, handleSubmit, watch, errors } = useForm();
   const { language, setLanguage } = useContext(LanguageContext);
+  const [upsell, setUpsell] = useState(false);
   const [resultados, setResultados] = useState(null);
   const [fechaIda, setFechaIda] = useState(addDays(new Date(), 2));
-  const [horaIda, setHoraIda] = useState(new Date());
-  const [fechaVuelta, setFechaVuelta] = useState(new Date());
-  const [horaVuelta, setHoraVuelta] = useState(new Date());
-  const [upsell, setUpsell] = useState(false);
   const watchOrigen = watch('origen');
-  const watchDestino = watch('destino');
-  const watchNumeroPasajeros = watch('numeroPasajeros', '1');
 
   function calculateMinTime(date) {
     return isSameDay(date, new Date()) ? new Date() : startOfToday()
@@ -59,7 +54,7 @@ const Home = (props) => {
 
   useEffect(function resetResults() {
     setResultados(null)
-  }, [watchOrigen, watchDestino, watchNumeroPasajeros])
+  }, [watchOrigen])
 
   const onSubmit = async (data) => {
     const allFields = {
@@ -71,206 +66,79 @@ const Home = (props) => {
   };
 
   function handleChangeFechaIda(fecha) {
-    if (fecha.toLocaleDateString() > fechaVuelta.toLocaleDateString()) {
-      setFechasIdaYVuelta(fecha)
-    } else {
-      setFechaIda(fecha)
-    }
     setMinTime(calculateMinTime(fecha));
     setHoraIda(fecha);
   }
 
-  function handleChangeHoraIda(hora) {
-    setHoraIda(hora);
-  }
+  // function showDestinations(origen) {
+  //   if (origen === 'Merida') {
+  //     return excursionsFromMerida.map(
+  //       (destino) => <option key={destino} value={destino}>{destino}</option>,
+  //     );
+  //   }
+  //   return excursionsFromCancun.map(
+  //     (destino) => <option key={destino} value={destino}>{destino}</option>,
+  //   );
+  // }
 
-  function setFechasIdaYVuelta(fecha) {
-    setFechaIda(fecha);
-  }
-
-  function showDestinations(origen) {
-    if (origen === 'Merida') {
-      return excursionsFromMerida.map(
-        (destino) => <option key={destino} value={destino}>{destino}</option>,
-      );
-    }
-    return excursionsFromCancun.map(
-      (destino) => <option key={destino} value={destino}>{destino}</option>,
-    );
-  }
-
-  // Start Custom Validator for Places --------------------------------------------------
-  // Find all inputs on the DOM which are bound to a datalist via their list attribute.
-  var inputs = document.querySelectorAll('input[list]');
-  for (var i = 0; i < inputs.length; i++) {
-    // When the value of the input changes...
-    inputs[i].addEventListener('change', function () {
-      var optionFound = false,
-        datalist = this.list;
-      // Determine whether an option exists with the current value of the input.
-      for (var j = 0; j < datalist.options.length; j++) {
-        if (this.value == datalist.options[j].value) {
-          optionFound = true;
-          break;
-        }
-      }
-      // use the setCustomValidity function of the Validation API
-      // to provide an user feedback if the value does not exist in the datalist
-      if (optionFound) {
-        this.setCustomValidity('');
-      } else {
-        this.setCustomValidity(texts[language]['index-v']);
-      }
-    });
-  }
-  // End Custom Validator for Places --------------------------------------------------
-
+  inputListValueValidator(texts[language]['index-v']);
 
   return (
     <div className="react-app">
       <div className="background-container">
-        <div className="booking-box">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <form className="skinny-search-box" onSubmit={handleSubmit(onSubmit)}>
+          <div className="transport-details-container">
 
-              <div className="transport-details-container">
-                <div>
-                  <div className="transport-fields">
-                    <div className="field-container">
-                      <label id="index-2" name="label-origen" htmlFor="origen">
-                        {texts[language]['index-2']}
-                        <div className="custom-select-wrapper">
-                          <input autoComplete="off" placeholder={texts[language]['index-12']} list="origin" aria-labelledby="label-origen" className="custom-arrow detail-input" name="origen" ref={register({ required: true })} />
-
-                          <datalist id="origin">
-                            {excursionOrigins.map((origen) => <option key={`origen-${origen}`} value={origen}>{origen}</option>)}
-                          </datalist>
-                        </div>
-                      </label>
-                      <div className="error-container">{errors.origen && texts[language]['index-14']}</div>
-                    </div>
-
-                    <div className="field-container">
-                      <label htmlFor="destino">
-                        {texts[language]['index-3']}
-                        <div className="custom-select-wrapper">
-                          <input autoComplete="off" placeholder={texts[language]['index-13']} list="destino" className="custom-arrow detail-input" name="destino" ref={register({ required: true })} />
-                          <datalist id="destino">
-                            {showDestinations(watchOrigen)}
-                          </datalist>
-                        </div>
-                      </label>
-                      <div className="error-container">{errors.destino && texts[language]['index-14']}</div>
-                    </div>
-
-                    <div className="field-container">
-                      <label htmlFor="fecha-ida">
-                        {texts[language]['index-4']}:
-                    <div className="custom-select-wrapper">
-                          <DatePicker
-                            id="date-picker-ida"
-                            name="fecha-ida"
-                            selected={fechaIda}
-                            onChange={(fecha) => handleChangeFechaIda(fecha)}
-                            minDate={addDays(new Date(), 2)}
-                            ref={register}
-                            popperPlacement="bottom-end"
-                            popperModifiers={{
-                              flip: {
-                                behavior: ["bottom"] // don't allow it to flip to be above
-                              },
-                              preventOverflow: {
-                                enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
-                              },
-                              hide: {
-                                enabled: false // turn off since needs preventOverflow to be enabled
-                              }
-                            }}
-                            dateFormat="d MMMM, yyyy"
-                            locale={language}
-                          />
-                          <img className="arrow" src={dropDownArrow} alt="" />
-                        </div>
-                      </label>
-                      <div className="error-container" />
-
-                    </div>
-
-                    <div className="field-container small-field">
-                      <label htmlFor="hora-ida">
-                        {texts[language]['index-5']}:
-                    <div className="custom-select-wrapper">
-                          <DatePicker
-                            id="time-picker-ida"
-                            name="hora-ida"
-                            minTime={minTime}
-                            maxTime={endOfDay(new Date())}
-                            timeIntervals={15}
-                            selected={horaIda}
-                            onChange={(hora) => handleChangeHoraIda(hora)}
-                            ref={register}
-                            popperPlacement="bottom-end"
-                            popperModifiers={{
-                              flip: {
-                                behavior: ["bottom"] // don't allow it to flip to be above
-                              },
-                              preventOverflow: {
-                                enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
-                              },
-                              hide: {
-                                enabled: false // turn off since needs preventOverflow to be enabled
-                              }
-                            }}
-                            locale={language}
-                            showTimeSelect
-                            showTimeSelectOnly
-                            dateFormat="h:mm aa"
-                            timeCaption={texts[language]['index-6']}
-                          />
-                          <img className="arrow" src={dropDownArrow} alt="" />
-                        </div>
-                      </label>
-                      <div className="error-container" />
-                    </div>
-
-                    <div className="field-container small-field">
-                      <label htmlFor="numeroPasajeros">
-                        {texts[language]['index-7']}
-                        <div className="custom-select-wrapper">
-                          <select className="custom-arrow detail-input" name="numeroPasajeros" ref={register}>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                          </select>
-                          <img className="arrow" src={dropDownArrow} alt="" />
-                        </div>
-                      </label>
-                      <div className="error-container" />
-                    </div>
-                  </div>
-                </div>
-                <div className={"field-container"}>
-                  <input className="detail-submit mobile-submit" type="submit" value="Buscar" />
-                  <div className="error-container" />
-                </div>
+            <div className="field-container">
+              <div className="custom-select-wrapper">
+                <input autoComplete="off" placeholder={texts[language]['index-0']} list="origin" aria-labelledby="label-origen" className="custom-arrow detail-input" name="origen" ref={register({ required: true })} />
+                <img className="arrow" src={dropDownArrow} alt="" />
+                <datalist id="origin">
+                  {excursionOrigins.map((origen) => <option key={`origen-${origen}`} value={origen}>{origen}</option>)}
+                </datalist>
               </div>
-
+              {/* <div className="error-container">{errors.origen && texts[language]['index-14']}</div> */}
             </div>
-          </form>
-        </div>
-      </div>
 
+            <div className="field-container">
+              <div className="custom-select-wrapper">
+                <DatePicker
+                  id="date-picker-ida"
+                  name="fecha-ida"
+                  selected={fechaIda}
+                  onChange={(fecha) => handleChangeFechaIda(fecha)}
+                  minDate={addDays(new Date(), 2)}
+                  ref={register}
+                  popperPlacement="bottom-end"
+                  popperModifiers={{
+                    flip: {
+                      behavior: ["bottom"] // don't allow it to flip to be above
+                    },
+                    preventOverflow: {
+                      enabled: false // tell it not to try to stay within the view (this prevents the popper from covering the element you clicked)
+                    },
+                    hide: {
+                      enabled: false // turn off since needs preventOverflow to be enabled
+                    }
+                  }}
+                  dateFormat="d MMMM, yyyy"
+                  locale={language}
+                  placeholder="Fecha"
+                />
+                <img className="arrow" src={dropDownArrow} alt="" />
+              </div>
+              {/* <div className="error-container" /> */}
+            </div>
+
+            <div className="field-container">
+              <div className="custom-select-wrapper">
+                <input className="detail-submit mobile-submit" type="submit" value="Buscar" />
+                {/* <div className="error-container" /> */}
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
       <div className="results-container">
         {
           resultados && watchNumeroPasajeros < 10
@@ -288,14 +156,16 @@ const Home = (props) => {
             : null
         }
       </div>
-      {upsell
-        ? (
-          <div style={{ zIndex: 1, position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
-            <UpsellWindow reservationData={reservationData} setReservationData={setReservationData} price={price} setPrice={setPrice} setUpsell={setUpsell} />
-          </div>
-        )
-        : null}
-    </div>
+      {
+        upsell
+          ? (
+            <div style={{ zIndex: 1, position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
+              <UpsellWindow reservationData={reservationData} setReservationData={setReservationData} price={price} setPrice={setPrice} setUpsell={setUpsell} />
+            </div>
+          )
+          : null
+      }
+    </div >
   );
 };
 

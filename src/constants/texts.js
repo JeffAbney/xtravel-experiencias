@@ -2,7 +2,7 @@ const texts = {
   'es':
   {
     'index-v': 'Por favor, escoge un destino de la lista.',
-    'index-0': 'Desde Cancún',
+    'index-0': 'Tu ubicación',
     'index-1': 'Desde Mérida',
     'index-2': 'Desde: ',
     'index-3': 'Tipo de experiencia: ',
@@ -75,7 +75,7 @@ const texts = {
   },
   'en': {
     'index-v': 'Please choose a value form the list.',
-    'index-0': 'One Way',
+    'index-0': 'Your location',
     'index-1': 'Round Trip ',
     'index-2': 'From: ',
     'index-3': 'Type of Experience: ',

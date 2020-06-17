@@ -4,7 +4,7 @@ function correctCase(unformattedPlaceArr) {
   return formattedPlaceArr;
 }
 
-const excursionsFromCancun = [
+const experiencesFromCancun = [
   "Salón de Belleza",
   "Tour en Moto",
   "Viaje de Snorkel",
@@ -26,6 +26,6 @@ const excursionsFromMerida = [
 // const fromAeropuertoMerida = correctCase(fromAeropuertoMeridaNotFormatted);
 
 export {
-  excursionsFromCancun,
+  experiencesFromCancun,
   excursionsFromMerida
 };
