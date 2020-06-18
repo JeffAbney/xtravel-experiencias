@@ -22,14 +22,12 @@ export default function App() {
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>
       <Router>
-        <div>
           <Switch>
             {/* path for ES app   experiencias || path for EN app   experiences */}
             <Route path="/experiencias" exact render={(props) => <Home {...props} reservationData={reservationData} setReservationData={setReservationData} setVehicle={setVehicle} price={price} setPrice={setPrice} />} />
             <Route path="/infoDeReserva" exact component={(props) => <PaymentScreen {...props} key={window.location.pathname} reservationData={reservationData} setReservationData={setReservationData} vehicle={vehicle} price={price} setPayment_Method={setPayment_Method} />} />
             <Route path="/thankYou" exact component={(props) => <ThankYou {...props} payment_Method={payment_Method} language={language} />} />
           </Switch>
-        </div>
       </Router>
     </LanguageContext.Provider>
   );

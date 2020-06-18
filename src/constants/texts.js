@@ -27,6 +27,8 @@ const texts = {
     'resultados-5': 'Reservar',
     'resultados-6a': 'Duración máxima de',
     'resultados-6b': 'horas',
+    'results-header': 'Las experiencias son lo mas valioso para recordar siempre cualquier viaje.',
+
     'payscreen-0': 'Ya casi queda listo el pedido, completa los siguientes campos para brindarte el mejor servicio.',
     'payform-0': 'Revisa el campo ',
     'payform-1': '¿Cómo deseas pagar?',
@@ -71,7 +73,17 @@ const texts = {
     'details-7b': '1 pasajero',
     'details-8': 'Precio: ',
     'upsell-0a': 'Agregar',
-    'upsell-0b': 'No gracias'
+    'upsell-0b': 'No gracias',
+    experiences: {
+      "from": "Desde",
+      "perPerson": 'Por persona',
+      "BeautyExperience": {
+        "title": "Beauty Experience",
+        "description": "Peinado, Maquillaje, Bebidas. Incluye traslado.",
+        "longDescription": "Esta experiencia te dará la oportunidad de tener todos esos servicios que requieres para verte espectacular en ese evento tan esperado. Contamos con todos los servicios necesarios de la mano con un equipo experto y con la seguridad que usaremos productos de la más alta calidad para que tu solo te procupes por divertirte en esa fecha especial.",
+        "languages": "Inglés/Español"
+      }
+    }
   },
   'en': {
     'index-v': 'Please choose a value form the list.',
@@ -92,6 +104,7 @@ const texts = {
     'index-12': 'From',
     'index-13': 'My Experience',
     'index-14': 'Please fill out this field',
+    'results-header': 'Experiences are the most valuable souvenirs you can bring come from your adventure.',
     'resultados-0': 'One Way',
     'resultados-1': 'Round Trip',
     'resultados-2': 'Return:',
@@ -144,8 +157,18 @@ const texts = {
     'details-7b': '1 passenger',
     'details-8': 'Price: ',
     'upsell-0a': 'Add',
-    'upsell-0b': 'No thanks'
+    'upsell-0b': 'No thanks',
+    experiences: {
+      "from": "From",
+      "perPerson": 'Per persona',
+      "BeautyExperience": {
+        "title": "Beauty Experience",
+        "description": "Hair, Makeup, Drinks. Includes transportation to and from.",
+        "longDescription": "This experience will give you the opportunity to receive all the pampering that you need to look spectacular for your big event. We have all the necessary services on hand with an expert team and the confidence that the highest quality products bring with them so that you only have to worry about having fun on that special day.",
+        "languages": "English/Spanish"
 
+      }
+    }
   }
 }
 

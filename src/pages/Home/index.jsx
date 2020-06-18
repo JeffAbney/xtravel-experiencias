@@ -7,29 +7,21 @@ import es from "date-fns/locale/es";
 import addDays from "date-fns/addDays";
 import texts from '../../constants/texts';
 import { LanguageContext } from '../../components/LanguageContext';
-
-import Resultados from './Resultados';
+import ResultCard from './ResultCard';
 import 'react-datepicker/dist/react-datepicker.css';
 import dropDownArrow from '../../assets/icons/dropdown_arrow.png';
 import checkSpace from '../../assets/icons/check_Space.png';
 import checkMark from '../../assets/icons/Checkmark.png';
-import {
-  experiencesFromCancun,
-} from '../../constants/destinos';
+import getExperiences from '../../utils/getExperiences';
 import excursionOrigins from '../../constants/origins';
 import UpsellWindow from '../../components/UpsellWindow';
 import inputListValueValidator from '../../utils/inputListValueValidator';
 
 registerLocale("es", es);
 
-const unfilteredAllPlaces = [
-  ...experiencesFromCancun,
-];
-
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
 }
-const allPlaces = unfilteredAllPlaces.filter(onlyUnique);
 
 const Home = (props) => {
   const { price, setPrice, reservationData, setReservationData, vehicle, setVehicle } = props;
@@ -39,6 +31,7 @@ const Home = (props) => {
   const [resultados, setResultados] = useState(null);
   const [fechaIda, setFechaIda] = useState(addDays(new Date(), 2));
   const watchOrigen = watch('origen');
+  const experiences = getExperiences(language);
 
   function calculateMinTime(date) {
     return isSameDay(date, new Date()) ? new Date() : startOfToday()
@@ -82,7 +75,7 @@ const Home = (props) => {
   // }
 
   inputListValueValidator(texts[language]['index-v']);
-
+  console.log('experiences - ', experiences);
   return (
     <div className="react-app">
       <div className="background-container">
@@ -140,21 +133,16 @@ const Home = (props) => {
         </form>
       </div>
       <div className="results-container">
-        {
-          resultados && watchNumeroPasajeros < 10
-            ? <Resultados id="resultados" pasajeros={9} reservation={resultados} setUpsell={setUpsell} setVehicle={setVehicle} setPrice={setPrice} />
-            : null
-        }
-        {
-          resultados
-            ? <Resultados pasajeros={14} reservation={resultados} setUpsell={setUpsell} setVehicle={setVehicle} setPrice={setPrice} />
-            : null
-        }
-        {
-          resultados && watchNumeroPasajeros < 7
-            ? <Resultados pasajeros={6} reservation={resultados} setUpsell={setUpsell} setVehicle={setVehicle} setPrice={setPrice} />
-            : null
-        }
+        <div className="header-container">
+          <h1>{texts[language]['results-header']}</h1>
+        </div>
+        <div className="results-card-container">
+          <ResultCard id="result" experience={experiences[0]} setUpsell={setUpsell} setPrice={setPrice} language={language} />
+          <ResultCard id="result" experience={experiences[0]} setUpsell={setUpsell} setPrice={setPrice} language={language} />
+          <ResultCard id="result" experience={experiences[0]} setUpsell={setUpsell} setPrice={setPrice} language={language} />
+          <ResultCard id="result" experience={experiences[0]} setUpsell={setUpsell} setPrice={setPrice} language={language} />
+
+        </div>
       </div>
       {
         upsell
