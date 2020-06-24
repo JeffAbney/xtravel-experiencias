@@ -5,19 +5,19 @@ import PropTypes, {
   shape,
   string,
 } from 'prop-types';
-import texts from '../../constants/texts'
+import texts from '../constants/texts'
 
 require('dotenv').config();
 
 const ResultCard = (props) => {
-  const { id, experience, setPrice, setUpsell, language } = props;
+  const { id, experience, setExperience, language } = props;
   const { title, city, state, description, image, price } = experience;
   const text = texts[language].experiences;
   const history = useHistory();
 
   function selectExperience() {
-    setUpsell(true);
-    setPrice(price);
+    setExperience(experience);
+    history.push('/experiencia');
   }
 
   return (
@@ -34,17 +34,6 @@ const ResultCard = (props) => {
       </div>
     </div >
   );
-};
-
-ResultCard.propTypes = {
-  pasajeros: number.isRequired,
-  reservation: shape({
-    origen: string.isRequired,
-    destino: string.isRequired,
-    numeroPasajeros: string.isRequired,
-    fechaIda: PropTypes.instanceOf(Date).isRequired,
-    fechaVuelta: PropTypes.instanceOf(Date),
-  }).isRequired,
 };
 
 export default ResultCard;

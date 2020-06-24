@@ -61,28 +61,26 @@ const texts = {
     'payform-27': 'Acepto los Términos y Condiciones',
     'payform-28': 'Pagar',
     'details-0': 'Detalles de compra',
-    'details-1a': 'Solo Ida',
-    'details-1b': 'Ida y Vuelta',
-    'details-1c': 'Excursión',
-    'details-2': 'Desde: ',
-    'details-3': 'Destino: ',
-    'details-4': 'Fecha de excursión:',
-    'details-5': 'Fecha de Vuelta: ',
-    'details-6': 'Número de pasajeros:',
-    'details-7a': 'pasajeros',
-    'details-7b': '1 pasajero',
+    'details-1': 'Experiencia',
+    'details-2': 'Donde: ',
+    'details-3': 'Nombe de experiencia: ',
+    'details-4': 'Fecha de experiencia:',
+    'details-6': 'Número de personas:',
+    'details-7a': 'personas',
+    'details-7b': '1 persona',
     'details-8': 'Precio: ',
     'upsell-0a': 'Agregar',
     'upsell-0b': 'No gracias',
     experiences: {
       "from": "Desde",
-      "perPerson": 'Por persona',
-      "BeautyExperience": {
-        "title": "Beauty Experience",
-        "description": "Peinado, Maquillaje, Bebidas. Incluye traslado.",
-        "longDescription": "Esta experiencia te dará la oportunidad de tener todos esos servicios que requieres para verte espectacular en ese evento tan esperado. Contamos con todos los servicios necesarios de la mano con un equipo experto y con la seguridad que usaremos productos de la más alta calidad para que tu solo te procupes por divertirte en esa fecha especial.",
-        "languages": "Inglés/Español"
-      }
+      "perPerson": 'por persona',
+      "price": 'Precio',
+      "numberOfPeople": 'Número de personas',
+      "time": "Tiempo",
+      "people": "Personas",
+      "languages": "Idiomas",
+      "pay": "Pagar",
+      "add": 'Agregar'
     }
   },
   'en': {
@@ -145,29 +143,26 @@ const texts = {
     'payform-27': 'I accept the Terms and Conditions',
     'payform-28': 'Pay',
     'details-0': 'Purchase Details',
-    'details-1a': 'One Way',
-    'details-1b': 'Round Trip',
-    'details-1c': 'Excursion',
-    'details-2': 'From: ',
-    'details-3': 'To: ',
-    'details-4': 'Excursion Date:',
-    'details-5': 'Return Date: ',
-    'details-6': 'Number of passengers:',
-    'details-7a': 'passengers',
-    'details-7b': '1 passenger',
+    'details-1': 'Experience',
+    'details-2': 'Where: ',
+    'details-3': 'Experience Name: ',
+    'details-4': 'Experience Date:',
+    'details-6': 'Number of people:',
+    'details-7a': 'people',
+    'details-7b': '1 person',
     'details-8': 'Price: ',
     'upsell-0a': 'Add',
     'upsell-0b': 'No thanks',
     experiences: {
       "from": "From",
-      "perPerson": 'Per persona',
-      "BeautyExperience": {
-        "title": "Beauty Experience",
-        "description": "Hair, Makeup, Drinks. Includes transportation to and from.",
-        "longDescription": "This experience will give you the opportunity to receive all the pampering that you need to look spectacular for your big event. We have all the necessary services on hand with an expert team and the confidence that the highest quality products bring with them so that you only have to worry about having fun on that special day.",
-        "languages": "English/Spanish"
-
-      }
+      "price": 'Price',
+      "perPerson": 'per persona',
+      "numberOfPeople": 'Number of people',
+      "time": "Tiempo",
+      "people": "Personas",
+      "languages": "Idiomas",
+      "pay": "Pay",
+      "add": 'Add'
     }
   }
 }

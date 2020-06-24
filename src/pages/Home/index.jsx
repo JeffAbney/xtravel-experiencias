@@ -7,14 +7,13 @@ import es from "date-fns/locale/es";
 import addDays from "date-fns/addDays";
 import texts from '../../constants/texts';
 import { LanguageContext } from '../../components/LanguageContext';
-import ResultCard from './ResultCard';
+import ResultCard from '../../components/ResultCard';
 import 'react-datepicker/dist/react-datepicker.css';
 import dropDownArrow from '../../assets/icons/dropdown_arrow.png';
 import checkSpace from '../../assets/icons/check_Space.png';
 import checkMark from '../../assets/icons/Checkmark.png';
-import getExperiences from '../../utils/getExperiences';
+import { experiencesByOrigin } from '../../constants/experiences';
 import excursionOrigins from '../../constants/origins';
-import UpsellWindow from '../../components/UpsellWindow';
 import inputListValueValidator from '../../utils/inputListValueValidator';
 
 registerLocale("es", es);
@@ -24,14 +23,12 @@ function onlyUnique(value, index, self) {
 }
 
 const Home = (props) => {
-  const { price, setPrice, reservationData, setReservationData, vehicle, setVehicle } = props;
+  const { price, setPrice, reservationData, setReservationData, setExperience } = props;
   const { register, handleSubmit, watch, errors } = useForm();
   const { language, setLanguage } = useContext(LanguageContext);
-  const [upsell, setUpsell] = useState(false);
   const [resultados, setResultados] = useState(null);
   const [fechaIda, setFechaIda] = useState(addDays(new Date(), 2));
   const watchOrigen = watch('origen');
-  const experiences = getExperiences(language);
 
   function calculateMinTime(date) {
     return isSameDay(date, new Date()) ? new Date() : startOfToday()
@@ -51,10 +48,12 @@ const Home = (props) => {
 
   const onSubmit = async (data) => {
     const allFields = {
-      ...data, fechaIda, fechaVuelta, horaIda, horaVuelta, tipoDeViaje: 'excursión'
+      ...data, fechaIda, tipoDeViaje: 'excursión'
     };
     console.log('data -', allFields);
-    setResultados(allFields);
+    console.log('results - ', experiencesByOrigin[data.origen])
+    console.log('data.origin', data.origen)
+    setResultados(experiencesByOrigin[data.origen]);
     setReservationData(allFields);
   };
 
@@ -75,7 +74,6 @@ const Home = (props) => {
   // }
 
   inputListValueValidator(texts[language]['index-v']);
-  console.log('experiences - ', experiences);
   return (
     <div className="react-app">
       <div className="background-container">
@@ -125,34 +123,35 @@ const Home = (props) => {
 
             <div className="field-container">
               <div className="custom-select-wrapper">
-                <input className="detail-submit mobile-submit" type="submit" value="Buscar" />
+                <input className="pay-submit mobile-submit" type="submit" value="Buscar" />
                 {/* <div className="error-container" /> */}
               </div>
             </div>
           </div>
         </form>
       </div>
-      <div className="results-container">
-        <div className="header-container">
-          <h1>{texts[language]['results-header']}</h1>
-        </div>
-        <div className="results-card-container">
-          <ResultCard id="result" experience={experiences[0]} setUpsell={setUpsell} setPrice={setPrice} language={language} />
-          <ResultCard id="result" experience={experiences[0]} setUpsell={setUpsell} setPrice={setPrice} language={language} />
-          <ResultCard id="result" experience={experiences[0]} setUpsell={setUpsell} setPrice={setPrice} language={language} />
-          <ResultCard id="result" experience={experiences[0]} setUpsell={setUpsell} setPrice={setPrice} language={language} />
-
-        </div>
-      </div>
-      {
-        upsell
-          ? (
-            <div style={{ zIndex: 1, position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
-              <UpsellWindow reservationData={reservationData} setReservationData={setReservationData} price={price} setPrice={setPrice} setUpsell={setUpsell} />
+      {resultados
+        ? (
+          <div className="results-container">
+            <div className="header-container">
+              <h1>{texts[language]['results-header']}</h1>
             </div>
-          )
-          : null
+            <div className="results-card-container" id="resultados">
+              {Object.keys(resultados).map((experience) =>
+                <ResultCard
+                  key={`experience-${resultados[experience][language].title}`}
+                  experience={resultados[experience][language]}
+                  language={language}
+                  setExperience={setExperience}
+                />
+              )}
+            </div>
+          </div>
+        )
+        : null
       }
+
+      
     </div >
   );
 };
