@@ -41,11 +41,10 @@ const DetallesDeCompra = (props) => {
 
           {reservationData.upSells
             ? Object.values(experience.upSells).map((item) => {
-              console.log('detallesDeCompra - item', item)
               let product = reservationData.upSells[item.title];
               if (product && product.quantity > 0) {
                 return (
-                  <div className="row" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <div className="row" key={item.title} style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div className="row price-calculation">
                       <p>{item.title}</p>
                       <p style={{ width: 40, marginLeft: 10 }}> X {product.quantity}</p>
