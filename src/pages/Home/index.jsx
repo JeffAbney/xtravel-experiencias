@@ -48,7 +48,7 @@ const Home = (props) => {
 
   const onSubmit = async (data) => {
     const allFields = {
-      ...data, fechaIda, tipoDeViaje: 'excursión'
+      ...data, fechaIda, tipoDeViaje: 'experiencia'
     };
     console.log('data -', allFields);
     console.log('results - ', experiencesByOrigin[data.origen])
