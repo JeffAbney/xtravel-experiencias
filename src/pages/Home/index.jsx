@@ -58,8 +58,8 @@ const Home = (props) => {
   };
 
   function handleChangeFechaIda(fecha) {
-    setMinTime(calculateMinTime(fecha));
-    setHoraIda(fecha);
+    // setMinTime(calculateMinTime(fecha));
+    setFechaIda(fecha);
   }
 
   // function showDestinations(origen) {
@@ -151,7 +151,7 @@ const Home = (props) => {
         : null
       }
 
-      
+
     </div >
   );
 };
