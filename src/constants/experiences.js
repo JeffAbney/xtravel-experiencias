@@ -59,6 +59,7 @@ const experiencesByOrigin = {
         "city": "Cancún",
         "state": "Quintana Roo",
         "headerImages": [BEImage0, BEImage1, BEImage2, BEImage3, BEImage4],
+        "offDays": [0],
       },
       "en": {
         "title": "Beauty Experience",
@@ -105,6 +106,7 @@ const experiencesByOrigin = {
         "city": "Cancún",
         "state": "Quintana Roo",
         "headerImages": [BEImage0, BEImage1, BEImage2, BEImage3, BEImage4],
+        "offDays": [0],
       }
     }
   },
