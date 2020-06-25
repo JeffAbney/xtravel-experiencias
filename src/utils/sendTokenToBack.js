@@ -1,5 +1,5 @@
 const sendTokenToBack = (data, cb) => {
-  fetch('http://xtravel-backend.herokuapp.com', {
+  fetch('https://xtravel-backend.herokuapp.com', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
