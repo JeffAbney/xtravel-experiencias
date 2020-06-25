@@ -56,6 +56,7 @@ const PaymentForm = (props) => {
   const onSubmit = () => {
     setIsLoading(true);
     setPayment_Method(watchPaymentMethod);
+    console.log('PaymentForm data', fullReservationData);
     makePurchase(fullReservationData, goToThankYou);
   }
 
@@ -132,12 +133,12 @@ const PaymentForm = (props) => {
 
         <label>
           <h2 className="payment-form-field-title">{texts[language]['payform-23']}</h2>
-          <input type="text" size="20" name="phone" ref={register({ required: true })} />
+          <input type="tel" size="20" name="phone" ref={register({ required: true })} />
         </label>
 
         <label>
           <h2 className="payment-form-field-title">{texts[language]['payform-24']}</h2>
-          <input type="text" size="20" name="email" ref={register({ required: true })} />
+          <input type="email" size="20" name="email" ref={register({ required: true })} />
         </label>
       </div>
 
