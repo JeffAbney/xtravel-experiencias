@@ -14,7 +14,7 @@ const DetallesDeCompra = (props) => {
       <h1>{texts[language]['details-0']}</h1>
       <div className="purchase-details-box">
         <div className="detail-logistics">
-          <img src={vehicle} className="results-image" alt="car" />
+          <img src={experience.image} className="results-image" alt="experience" />
           <h2 id="trip-type"><strong>
             {texts[language]['details-1']}
           </strong></h2>
