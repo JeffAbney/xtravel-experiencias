@@ -33,7 +33,7 @@ export default function UpsellCard(props) {
       <div className="upsell-image-container">
         <img src={image} className="image-full upsell-image" />
       </div>
-      <div style={{ paddingLeft: 10, paddingRight: 10 }}>
+      <div style={{ paddingLeft: 10, paddingRight: 10, width: '100%' }}>
         <h1>{title}</h1>
         <p>${price.toLocaleString('en-US')} {text.perPerson}</p>
         <p>{text.numberOfPeople}: </p>

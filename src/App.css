@@ -316,7 +316,7 @@ label {
   color: var(--blue);
   flex-direction: column;
   width: 30%;
-  max-width: 300px;
+  max-width: 250px;
   height: 450px;
   justify-content: flex-start;
   align-items: center;
@@ -335,7 +335,7 @@ label {
   position: relative;
 }
 
-.result-image {
+.result-image-container .result-image {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -689,6 +689,7 @@ label {
 .people-counter p {
   margin-right: 8px;
   margin-left: 8px;
+  margin-bottom: 0px;
 }
 
 .upsell-window {
@@ -725,6 +726,8 @@ label {
 .upsell-text-container p {
   font-size: 24px;
   line-height: 1.3em;
+  text-align: center;
+  color: var(--blue);
 }
 
 .upsell-cards-container {
@@ -735,7 +738,7 @@ label {
 }
 
 .upsell-card {
-  height: 250px;
+  height: 275px;
   width: 175px;
   border-radius: 5px;
   background-color: #fff;
