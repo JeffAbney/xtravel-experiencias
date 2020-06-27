@@ -31,7 +31,7 @@ export default function UpsellCard(props) {
   return (
     <div className="upsell-card">
       <div className="upsell-image-container">
-        <img src={image} className="image-full upsell-image" />
+        <img src={image} style={{ borderTopLeftRadius: 5, borderTopRightRadius: 5, borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }} className="image-full upsell-image" />
       </div>
       <div style={{ paddingLeft: 10, paddingRight: 10, width: '100%' }}>
         <h1>{title}</h1>

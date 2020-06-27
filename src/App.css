@@ -151,6 +151,7 @@ button:hover {
   color: var(--blue);
   font-size: 16px;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 select.custom-arrow {
@@ -816,7 +817,7 @@ label {
     margin-top: 0;
     margin-bottom: 0;
     width: 100%;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .small-field {
@@ -833,6 +834,7 @@ label {
 
   .custom-select-wrapper {
     max-width: 100%;
+    justify-content: center;
   }
 
   .react-datepicker-wrapper {
@@ -843,22 +845,61 @@ label {
   .detail-select,
   #date-picker-vuelta,
   #date-picker-ida {
-    width: 100%;
     box-sizing: border-box;
   }
 
   .mobile-submit {
-    width: 50%;
     align-items: flex-start;
   }
 
   .results-container {
     flex-direction: column;
     width: 95%;
+    padding: 25px 15px;
+  }
+
+  .header-container h1 {
+    max-width: initial;
   }
 
   .results-box {
     width: 450px;
+  }
+
+  .result-card {
+    width: initial;
+    height: initial;
+  }
+
+  .experience-details {
+    flex-direction: column;
+  }
+
+  .experience-details-text {
+    width: initial;
+  }
+
+  .experience-details-graphics {
+    width: initial;
+  }
+
+  .price-box-row {
+    padding: 10px 0px;
+  }
+  
+  .upsell-box {
+    overflow-y: scroll;
+    max-height: 50%;
+    flex-direction: column;
+  }
+
+  .upsell-text-container {
+    width: initial;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .upsell-cards-container {
+    width: initial;
   }
 
   .big-top,
@@ -900,8 +941,6 @@ label {
     width: 100%;
     margin: 15px;
     padding: 10px;
-    border: grey 1px solid;
-    border-radius: 1%;
   }
 
   .payment-form-container {
@@ -912,6 +951,7 @@ label {
 
   .payment-form-section {
     align-items: flex-end;
+    max-width: 95%;
   }
 
   #thank-you-img {
