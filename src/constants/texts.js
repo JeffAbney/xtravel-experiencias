@@ -156,11 +156,11 @@ const texts = {
     experiences: {
       "from": "From",
       "price": 'Price',
-      "perPerson": 'per persona',
+      "perPerson": 'per person',
       "numberOfPeople": 'Number of people',
-      "time": "Tiempo",
-      "people": "Personas",
-      "languages": "Idiomas",
+      "time": "Time",
+      "people": "People",
+      "languages": "Languages",
       "pay": "Pay",
       "add": 'Add'
     }

@@ -38,10 +38,14 @@ export default function UpsellWindow(props) {
       <div className="upsell-text-container">
         <p>{experience.upSellText}</p>
       </div>
-      <div className="upsell-cards-container">
-        {experience.upSells.map((upsell) => <UpsellCard key={upsell.title} upsell={upsell} language={language} handleChangeItem={handleChangeItem} />)}
+      <div className="upsale-actions-container">
+        <div className="upsell-cards-container">
+          {experience.upSells.map((upsell) => <UpsellCard key={upsell.title} upsell={upsell} language={language} handleChangeItem={handleChangeItem} />)}
+        </div>
         <button className="detail-submit" style={{ marginBottom: 20, marginTop: 20 }} onClick={handleUpsell}>{texts[language]['upsell-0a']}</button>
+
       </div>
+
 
     </ div>
   )

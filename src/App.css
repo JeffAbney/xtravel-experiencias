@@ -731,11 +731,22 @@ label {
   color: var(--blue);
 }
 
-.upsell-cards-container {
+.upsale-actions-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 60%;
   justify-content: center;
+  align-items: center;
+}
+
+.upsell-cards-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .upsell-card {
@@ -886,7 +897,7 @@ label {
   .price-box-row {
     padding: 10px 0px;
   }
-  
+
   .upsell-box {
     overflow-y: scroll;
     max-height: 50%;

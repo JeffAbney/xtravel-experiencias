@@ -75,32 +75,32 @@ const experiencesByOrigin = {
           {
             "title": "Classic Manicure",
             "price": 660,
-            "image": BEImage0,
+            "image": maniImage,
           },
           {
             "title": "Manicure + Gelish",
             "price": 1100,
-            "image": BEImage0,
+            "image": maniGeliImage,
           },
           {
             "title": "Classic Pedicure",
             "price": 750,
-            "image": BEImage0,
+            "image": pediImage,
           },
           {
             "title": "Pedicure + Gelish",
             "price": 1200,
-            "image": BEImage0,
+            "image": pediGeliImage,
           },
           {
             "title": "Gelish Srvice",
             "price": 450,
-            "image": BEImage0,
+            "image": geliImage,
           },
           {
             "title": "Classic Acrylic Nails",
             "price": 1290,
-            "image": BEImage0,
+            "image": unasImage,
           },
         ],
         "city": "Cancún",
