@@ -26,7 +26,7 @@ const Home = (props) => {
   const { price, setPrice, reservationData, setReservationData, setExperience } = props;
   const { register, handleSubmit, watch, errors } = useForm();
   const { language, setLanguage } = useContext(LanguageContext);
-  const [resultados, setResultados] = useState(null);
+  const [resultados, setResultados] = useState(experiencesByOrigin.Cancun);
   const [fechaIda, setFechaIda] = useState(addDays(new Date(), 2));
   const watchOrigen = watch('origen');
 
@@ -35,16 +35,12 @@ const Home = (props) => {
   }
   const [minTime, setMinTime] = useState(calculateMinTime(new Date()));
 
-  useEffect(function scrollToresults() {
+function scrollToresults() {
     const results = document.getElementById("resultados");
     if (results) {
       document.getElementById("resultados").scrollIntoView({ behavior: "smooth", block: "center" });
     }
-  }, [resultados])
-
-  useEffect(function resetResults() {
-    setResultados(null)
-  }, [watchOrigen])
+  }
 
   const onSubmit = async (data) => {
     const allFields = {
@@ -55,6 +51,7 @@ const Home = (props) => {
     console.log('data.origin', data.origen)
     setResultados(experiencesByOrigin[data.origen]);
     setReservationData(allFields);
+    scrollToresults();
   };
 
   function handleChangeFechaIda(fecha) {
