@@ -5,9 +5,10 @@ import { experiencesByOrigin } from '../constants/experiences';
 
 const DetallesDeCompra = (props) => {
   const { reservationData, vehicle, price } = props;
-  const { experience, fechaIda, origen, numberOfPeople } = reservationData;
+  const { experience, fechaIda, origen, numberOfPeople, numberOfChildren } = reservationData;
   const { language } = useContext(LanguageContext);
   console.log('detalles reservationData', reservationData);
+  console.log('detalles price', price);
 
   return (
     <div className="reservation-details-container">
@@ -25,19 +26,39 @@ const DetallesDeCompra = (props) => {
           <h3><strong>{texts[language]['details-4']}</strong></h3>
           <p>{fechaIda.toLocaleDateString()}</p>
           <h3><strong>{texts[language]['details-6']}</strong></h3>
-          <p>{numberOfPeople > 1 ? `${numberOfPeople} ${texts[language]['details-7a']}` : texts[language]['details-7b']}</p>
+          <p>{numberOfPeople > 1 ? `${numberOfPeople} ${experience.priceChild ? texts[language]['details-7c'] : texts[language]['details-7a']}` : texts[language]['details-7b']}</p>
+          {
+            experience.priceChild
+              ? <p>{numberOfChildren} {texts[language]['details-7d']}</p>
+              : null
+          }
         </div>
 
         <div className="detail-price-calculator">
           <div className="row" style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div className="row price-calculation">
-              <p>{experience.title}</p>
+              <p>{experience.priceChild ? texts[language]['details-7c'] : texts[language]['details-7a']}</p>
               <p style={{ width: 40, marginLeft: 10 }}> X {numberOfPeople}</p>
             </div>
             <div className="row price-calculation-product">
               <p>${(experience.price * numberOfPeople).toLocaleString('en-US')}</p>
             </div>
           </div>
+
+          {experience.priceChild
+            ? (
+              <div className="row" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div className="row price-calculation">
+                  <p>{texts[language]['details-7d']}</p>
+                  <p style={{ width: 40, marginLeft: 10 }}> X {numberOfChildren}</p>
+                </div>
+                <div className="row price-calculation-product">
+                  <p>${(experience.priceChild * numberOfChildren).toLocaleString('en-US')}</p>
+                </div>
+              </div>
+            )
+            : null
+          }
 
           {reservationData.upSells
             ? Object.values(experience.upSells).map((item) => {

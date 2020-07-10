@@ -10,14 +10,19 @@ import texts from '../constants/texts'
 require('dotenv').config();
 
 const ResultCard = (props) => {
-  const { id, experience, setExperience, language } = props;
+  const { id, experience, setExperience, language, reservationData, onPressWithoutOrigin } = props;
   const { title, city, state, description, image, price } = experience;
   const text = texts[language].experiences;
   const history = useHistory();
 
   function selectExperience() {
-    setExperience(experience);
-    history.push('/experiencia');
+    if (!reservationData || Object.keys(reservationData).length === 0) {
+      onPressWithoutOrigin({});
+    } else {
+      setExperience(experience);
+      history.push('/experiencia');
+    }
+
   }
 
   return (

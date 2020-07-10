@@ -1,7 +1,7 @@
 {
   "name": "xtravel_experiencias_app",
   "version": "0.1.0",
-  "homepage": "https://xtravel.mx/ExperienciasAppEs",
+  "homepage": "https://xtravel.mx/ExperienciasAppEn",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",

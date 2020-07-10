@@ -121,6 +121,20 @@ button:hover {
   font-weight: bold;
 }
 
+.light-button {
+  width: 100px;
+  height: 40px;
+  background-color: var(--yellow);
+  border-radius: 10px;
+  margin: 0;
+  border: none;
+  color: var(--blue);
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
 .dark-button {
   width: 200px;
   height: 40px;
@@ -253,30 +267,24 @@ label {
 
 .trip-grid {
   display: grid;
-  grid-template-columns: 40px max-content;
-  gap: 0;
+  grid-template-columns: 100px max-content;
+  gap: 10px;
+  margin-top: 50px;
 }
 
-.trip-grid > div {
+.trip-grid > * {
   display: flex;
+  margin: 5px;
+  align-self: flex-start;
   justify-content: center;
-  text-align: center;
-  margin: 0;
+  max-width: 90%;
 }
 
-.trip-grid > div > p {
-  width: 100%;
-  margin: 0 0 0 10px;
-  text-align: start;
+.trip-grid > .column1 {
 }
 
-.trip-grid-text-line {
-  display: flex;
-  height: 20px;
-  align-items: center;
-  height: max-content;
-  flex-wrap: wrap;
-  max-width: 45%;
+.trip-grid > .column2 {
+  justify-content: flex-start;
 }
 
 .results-container {
@@ -330,18 +338,18 @@ label {
 
 .result-image-container {
   display: flex;
-  height: 55%;
   width: 100%;
   align-items: center;
   position: relative;
+  justify-content: flex-start;
 }
 
 .result-image-container .result-image {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 10px 10px 0px 0px;
 }
 
@@ -607,6 +615,13 @@ label {
   width: 100%;
   height: 100%;
   border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.header-image-container img {
+  height: 100%;
+  width: auto;
 }
 
 .experience-details {
@@ -618,8 +633,8 @@ label {
 
 .experience-details-text {
   width: 55%;
-  padding-left: 10%;
-  padding-right: 5%;
+  padding-left: 5%;
+  padding-right: 2%;
   padding-top: 50px;
   font-family: "Lato";
   color: var(--blue);
@@ -644,8 +659,8 @@ label {
 
 .experience-details-graphics {
   width: 45%;
-  padding-right: 10%;
-  padding-left: 5%;
+  padding-right: 5%;
+  padding-left: 2%;
   padding-top: 50px;
 }
 
@@ -660,21 +675,36 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
+  min-width: 30%;
+  justify-content: center;
+  padding: 10px 0 10px 0;
 }
 
 .details-icon-column h2 {
   font-size: 20px;
   font-family: "Lato";
   margin-bottom: 0;
+  text-align: center;
 }
 
 .details-icon-column p {
   margin-top: 0;
+  text-align: center;
 }
 
 .details-icon {
   color: var(--blue);
   font-size: 28px;
+}
+
+.details-includes {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--blue);
+  border-top: 1px solid var(--blue);
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .price-box-row {
@@ -877,6 +907,10 @@ label {
     width: 450px;
   }
 
+  .results-card-container {
+    justify-content: center;
+  }
+
   .result-card {
     width: initial;
     height: initial;
@@ -900,8 +934,9 @@ label {
 
   .upsell-box {
     overflow-y: scroll;
-    max-height: 50%;
+    max-height: 90%;
     flex-direction: column;
+    align-items: center;
   }
 
   .upsell-text-container {
@@ -911,6 +946,10 @@ label {
 
   .upsell-cards-container {
     width: initial;
+  }
+
+  .upsell-card {
+    margin-top: 20px;
   }
 
   .big-top,

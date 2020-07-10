@@ -26,7 +26,7 @@ const Home = (props) => {
   const { price, setPrice, reservationData, setReservationData, setExperience } = props;
   const { register, handleSubmit, watch, errors } = useForm();
   const { language, setLanguage } = useContext(LanguageContext);
-  const [resultados, setResultados] = useState(experiencesByOrigin.Cancun);
+  const [resultados, setResultados] = useState({...experiencesByOrigin.Cancun, ...experiencesByOrigin['Riviera Maya']});
   const [fechaIda, setFechaIda] = useState(addDays(new Date(), 2));
   const watchOrigen = watch('origen');
 
@@ -35,10 +35,17 @@ const Home = (props) => {
   }
   const [minTime, setMinTime] = useState(calculateMinTime(new Date()));
 
-function scrollToresults() {
+  function scrollToresults() {
     const results = document.getElementById("resultados");
     if (results) {
       document.getElementById("resultados").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  function scrollToSearch() {
+    const search = document.getElementById("search");
+    if (search) {
+      search.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }
 
@@ -47,11 +54,15 @@ function scrollToresults() {
       ...data, fechaIda, tipoDeViaje: 'experiencia'
     };
     console.log('data -', allFields);
-    console.log('results - ', experiencesByOrigin[data.origen])
-    console.log('data.origin', data.origen)
-    setResultados(experiencesByOrigin[data.origen]);
-    setReservationData(allFields);
-    scrollToresults();
+    if (data.origen) {
+      console.log('results - ', experiencesByOrigin[data.origen])
+      console.log('data.origin', data.origen)
+      setResultados(experiencesByOrigin[data.origen]);
+      setReservationData(allFields);
+      scrollToresults();
+    } else {
+      scrollToSearch();
+    }
   };
 
   function handleChangeFechaIda(fecha) {
@@ -74,7 +85,7 @@ function scrollToresults() {
   return (
     <div className="react-app">
       <div className="background-container">
-        <form className="skinny-search-box" onSubmit={handleSubmit(onSubmit)}>
+        <form className="skinny-search-box" id="search" onSubmit={handleSubmit(onSubmit)}>
           <div className="transport-details-container">
 
             <div className="field-container">
@@ -140,6 +151,8 @@ function scrollToresults() {
                   experience={resultados[experience][language]}
                   language={language}
                   setExperience={setExperience}
+                  reservationData={reservationData}
+                  onPressWithoutOrigin={onSubmit}
                 />
               )}
             </div>

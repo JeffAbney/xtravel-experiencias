@@ -68,19 +68,32 @@ const texts = {
     'details-6': 'Número de personas:',
     'details-7a': 'personas',
     'details-7b': '1 persona',
+    'details-7c': 'adultos',
+    'details-7d': 'niños',
     'details-8': 'Precio: ',
     'upsell-0a': 'Agregar',
     'upsell-0b': 'No gracias',
     experiences: {
       "from": "Desde",
       "perPerson": 'por persona',
+      "perAdult": "por adulto",
+      "perChild": "por niño",
       "price": 'Precio',
       "numberOfPeople": 'Número de personas',
+      "priceAdult": "Precio Adulto",
+      "priceChild": "Precio niño",
+      "numberOfAdults": "Número de adultos",
+      "numberOfChildren":  "Número de niños",
       "time": "Tiempo",
       "people": "Personas",
       "languages": "Idiomas",
+      "availability": "Disponibilidad",
       "pay": "Pagar",
-      "add": 'Agregar'
+      "add": 'Agregar',
+      "suggestions": "Sugerencias",
+      "restrictions": 'Limitantes',
+      "includes": 'Incluye',
+      "download": "Descargar"
     }
   },
   'en': {
@@ -150,6 +163,8 @@ const texts = {
     'details-6': 'Number of people:',
     'details-7a': 'people',
     'details-7b': '1 person',
+    'details-7c': 'adults',
+    'details-7d': 'children',
     'details-8': 'Price: ',
     'upsell-0a': 'Add',
     'upsell-0b': 'No thanks',
@@ -158,11 +173,22 @@ const texts = {
       "price": 'Price',
       "perPerson": 'per person',
       "numberOfPeople": 'Number of people',
+      "perAdult": "per adult",
+      "perChild": "per child",
+      "priceAdult": "Adult price",
+      "priceChild": "Child price",
+      "numberOfAdults": "Number of adults",
+      "numberOfChildren":  "Number of children",
       "time": "Time",
       "people": "People",
       "languages": "Languages",
+      "availability": "Availability",
       "pay": "Pay",
-      "add": 'Add'
+      "add": 'Add',
+      "suggestions": "Suggestions",
+      "restrictions": 'Restrictions',
+      "includes": 'Includes',
+      "download": "Download"
     }
   }
 }
