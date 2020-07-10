@@ -27,7 +27,7 @@ const ResultCard = (props) => {
 
   return (
     <div className="result-card" onClick={() => selectExperience()} id={id}>
-      <div className="result-image-container" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover' }} />
+      <div className="result-image-container" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
       <div className="result-details">
         <h2>{title}</h2>
         <h3>{city}, {state}</h3>
