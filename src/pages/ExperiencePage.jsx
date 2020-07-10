@@ -164,7 +164,7 @@ export default function ExperiencePage(props) {
                 {experience.includes.map((item) => (
                   <div className="details-icon-column">
                     <div className="details-icon-container">
-                      <FontAwesomeIcon className="details-icon" icon={item.icon} />
+                      {typeof item.icon === 'string' ? <span class={item.icon}></span> : <FontAwesomeIcon className="details-icon" icon={item.icon} />}
                     </div>
                     <h2>{item.text}</h2>
                   </div>

@@ -9,6 +9,57 @@
   pointer-events: none;
 } */
 
+/* ICONS */
+.icon-wine:before {
+  font-family: "icon-font";
+  font-size: 28px;
+  content: "\0061";
+}
+
+.icon-mojito:before {
+  font-family: "icon-font";
+  font-size: 28px;
+  content: "\0062";
+}
+
+.icon-restaurant:before {
+  font-family: "icon-font";
+  font-size: 28px;
+  content: "\0063";
+}
+
+.icon-taco:before {
+  font-family: "icon-font";
+  font-size: 28px;
+  content: "\0064";
+}
+
+.icon-wine-glass:before {
+  font-family: "icon-font";
+  font-size: 28px;
+  content: "\0065";
+}
+
+.icon-calendar:before {
+  font-family: "icon-font";
+  font-size: 28px;
+  content: "\0066";
+}
+
+.icon-book:before {
+  font-family: "icon-font";
+  font-size: 28px;
+  content: "\0067";
+}
+
+.icon-bookmark:before {
+  font-family: "icon-font";
+  font-size: 28px;
+  content: "\0068";
+}
+
+/* END ICONS */
+
 * {
   font-family: "Lato";
 }
@@ -318,17 +369,12 @@ label {
 
 .result-card {
   position: relative;
-  display: flex;
-  border-radius: 25px;
   border: gray 1px solid;
   margin: 40px 20px 0 20px;
   color: var(--blue);
-  flex-direction: column;
   width: 30%;
   max-width: 250px;
   height: 450px;
-  justify-content: flex-start;
-  align-items: center;
   border-style: solid;
   border-width: 0px 0px 0px 0px;
   border-color: #00406e;
@@ -337,21 +383,23 @@ label {
 }
 
 .result-image-container {
-  display: flex;
   width: 100%;
-  align-items: center;
-  position: relative;
-  justify-content: flex-start;
+  height: 40%;
+  border-radius: 10px 10px 0px 0px;
 }
 
-.result-image-container .result-image {
+/* .result-image-container .result-image {
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
   max-height: 100%;
   border-radius: 10px 10px 0px 0px;
-}
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+} */
 
 .result-details {
   padding-left: 20px;

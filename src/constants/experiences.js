@@ -146,7 +146,7 @@ const experiencesByOrigin = {
     "TheTravelerTable ": {
       "es": {
         "title": "The Traveler Table ",
-        "description": "Disfruta esta mezcla de gastronomía, narración de historias, participación activa, interacción social y ¡mucha diversión!",
+        "description": "Disfruta esta mezcla de gastronomía y ¡mucha diversión!",
         "longDescription": `Olvídate de todo lo que has conocido acerca de salir a cenar… Permítenos transportar a tus papilas gustativas a un viaje en el tiempo en donde te mostraremos, a través de la magia de los sabores, técnicas gastronómicas desde el imperio Maya hasta nuestros días.
         
         Conoce y degusta las influencias de España, África y Medio Oriente, con un delicioso maridaje de vino, mezcal y tequila, mientras compartes esta fascinante cena de 5 tiempos con otros viajeros de todo el mundo.
@@ -179,9 +179,9 @@ const experiencesByOrigin = {
         "includes": [
           { "icon": faShuttleVan, "text": "Transporte con A/C" },
           { "icon": faUserTie, "text": "Guía" },
-          { "icon": faCocktail, "text": "Clase de coctelería" },
-          { "icon": faServer, "text": "Cena de 5 tiempos con 9 platillos" },
-          { "icon": faWineBottle, "text": "Maridaje de 5 vinos boutique, degustación de tequila y mezcal." },
+          { "icon": 'icon-mojito', "text": "Clase de coctelería" },
+          { "icon": 'icon-restaurant', "text": "Cena de 5 tiempos con 9 platillos" },
+          { "icon": 'icon-wine-glass', "text": "Maridaje de 5 vinos boutique, degustación de tequila y mezcal." },
         ],
         "downloadables": [
           {
@@ -189,18 +189,21 @@ const experiencesByOrigin = {
             description: "Descarga el pdf para verificar el horario de Pick Up en tu hotel.",
             iconTitle: "Salida",
             file: TTRivieraPDF,
+            icon: faShuttleVan
           },
           {
             title: "Cancún",
             description: "Descarga el pdf para verificar el horario de Pick Up en tu hotel.",
             iconTitle: "Salida",
             file: TTCancunPDF,
+            icon: faShuttleVan
           },
           {
             title: undefined,
             description: "Descarga el pdf para ver el menú",
             iconTitle: "Menu",
             file: TTMenuEs,
+            icon: 'icon-restaurant'
           }
         ]
       },
@@ -237,9 +240,9 @@ const experiencesByOrigin = {
         "includes": [
           { "icon": faShuttleVan, "text": "Transportation with A/C" },
           { "icon": faUserTie, "text": "Guide" },
-          { "icon": faCocktail, "text": "Mixology class" },
-          { "icon": faServer, "text": "5 course dinner with 9 dishes" },
-          { "icon": faWineBottle, "text": "Wine pairing with 5 botique wines, tequila and mezcal tasting." },
+          { "icon": 'icon-mojito', "text": "Mixology class" },
+          { "icon": 'icon-restaurant', "text": "5 course dinner with 9 dishes" },
+          { "icon": 'icon-wine-glass', "text": "Wine pairing with 5 botique wines, tequila and mezcal tasting." },
         ],
         "downloadables": [
           {
@@ -247,18 +250,21 @@ const experiencesByOrigin = {
             description: "Download the pdf to verify the pick up schedule for your hotel.",
             iconTitle: "Departure",
             file: TTRivieraPDF,
+            icon: faShuttleVan
           },
           {
             title: "Cancún",
             description: "Download the pdf to verify the pick up schedule for your hotel.",
             iconTitle: "Departure",
             file: TTCancunPDF,
+            icon: faShuttleVan
           },
           {
             title: undefined,
             description: "Download the pdf to see the menu.",
             iconTitle: "Menu",
             file: TTMenuEn,
+            icon: 'icon-restaurant'
           }
         ]
       }
@@ -266,6 +272,132 @@ const experiencesByOrigin = {
 
   },
   "Riviera Maya": {
+    "TheTravelerTable ": {
+      "es": {
+        "title": "The Traveler Table ",
+        "description": "Disfruta esta mezcla de gastronomía y ¡mucha diversión!",
+        "longDescription": `Olvídate de todo lo que has conocido acerca de salir a cenar… Permítenos transportar a tus papilas gustativas a un viaje en el tiempo en donde te mostraremos, a través de la magia de los sabores, técnicas gastronómicas desde el imperio Maya hasta nuestros días.
+        
+        Conoce y degusta las influencias de España, África y Medio Oriente, con un delicioso maridaje de vino, mezcal y tequila, mientras compartes esta fascinante cena de 5 tiempos con otros viajeros de todo el mundo.
+        
+        ¡Maravillosamente divertido, interactivo y delicioso! Estás invitado a vivir una experiencia gastronómica colectiva única como ninguna otra en nuestro exclusivo club de playa a las afueras de Playa del Carmen.
+        
+        Disfruta esta mezcla de gastronomía, narración de historias, participación activa, interacción social y, lo más importante, ¡mucha diversión!        
+        `,
+        "suggestions": [
+          "Calzado cómodo para beach club.",
+          "Ropa casual.",
+          "Sueter ligero (en invierno)",
+          "Dinero para souvenir.",
+        ],
+        "restrictions": [
+          "Edad mínima 18 años",
+          "Háganos saber de antemano cualquier necesidades dietética especial y/o alergia para contemplarlos y poder preparar plato(s) de reemplazo, siempre y cuando nos sea posible."
+        ],
+        "languages": "Inglés",
+        "image": TravelerTableMain,
+        "price": 3211,
+        "timeLength": '3 horas más transportación',
+        "numberOfPeople": "A elegir",
+        "city": "Riviera Maya / Cancún",
+        "state": undefined,
+        "headerImages": [TTImage0, TTImage1, TTImage2, TTImage3, TTImage4, TTImage5, TTImage6, TTImage7, TTImage8, TTImage9, TTImage10, TTImage11, TTImage12, TTImage13, TTImage14, TTImage15],
+        "offDays": [0, 5, 6],
+        "availableDays": "Lunes a Jueves",
+        "aditionalInfo": "Pregunta por la opción de Grupos Privados, disponibles en cualquier fecha.",
+        "includes": [
+          { "icon": faShuttleVan, "text": "Transporte con A/C" },
+          { "icon": faUserTie, "text": "Guía" },
+          { "icon": 'icon-mojito', "text": "Clase de coctelería" },
+          { "icon": 'icon-restaurant', "text": "Cena de 5 tiempos con 9 platillos" },
+          { "icon": 'icon-wine-glass', "text": "Maridaje de 5 vinos boutique, degustación de tequila y mezcal." },
+        ],
+        "downloadables": [
+          {
+            title: "Riviera Maya",
+            description: "Descarga el pdf para verificar el horario de Pick Up en tu hotel.",
+            iconTitle: "Salida",
+            file: TTRivieraPDF,
+            icon: faShuttleVan
+          },
+          {
+            title: "Cancún",
+            description: "Descarga el pdf para verificar el horario de Pick Up en tu hotel.",
+            iconTitle: "Salida",
+            file: TTCancunPDF,
+            icon: faShuttleVan
+          },
+          {
+            title: undefined,
+            description: "Descarga el pdf para ver el menú",
+            iconTitle: "Menu",
+            file: TTMenuEs,
+            icon: 'icon-restaurant'
+          }
+        ]
+      },
+      "en": {
+        "title": "The Traveler Table",
+        "description": "Enjoy this blend of gastronomy, storytelling, hands-on participation, social interaction and most importantly - fun!",
+        "longDescription": `Forget everything you know about going out to dinner... Let us take your taste buds on a journey through time, showcasing flavors and techniques from the Mayan empire to the present day. Learn and taste the influences of Spain, Africa and the Middle East, with deliciously paired wines, mezcals and tequilas, whilst sharing this 5-course meal with travelers from all over the world.                                                                                                                                                                 
+        Outstandingly fun, interactive and delicious!
+        Set in our exclusive beach club outside Playa del Carmen, you are invited to live a unique communal dining experience like no other. Enjoy this blend of gastronomy, storytelling, hands-on participation, social interaction and most importantly - fun!
+        
+        Enjoy this blend of gastronomy, storytelling, hands-on participation, social interaction and most importantly - fun!
+        `,
+        "suggestions": [
+          "Comfortable shoes for the beach club.",
+          "Casual attire.",
+          "Light sweater (in winter)",
+          "Money for souvenirs. ",
+        ],
+        "restrictions": [
+          "Minimum age of 18 years",
+          "Let us know of any special dietary need or allergy in order to take them into account and prepare dishes that conform to your needs, whenever it is possible."
+        ],
+        "languages": "English",
+        "image": TravelerTableMain,
+        "price": 3211,
+        "timeLength": '3 hours plus transportation',
+        "numberOfPeople": "As needed",
+        "city": "Riviera Maya / Cancún",
+        "state": undefined,
+        "headerImages": [TTImage0, TTImage1, TTImage2, TTImage3, TTImage4, TTImage5, TTImage6, TTImage7, TTImage8, TTImage9, TTImage10, TTImage11, TTImage12, TTImage13, TTImage14, TTImage15],
+        "offDays": [0, 5, 6],
+        "availableDays": "Monday to Thursday",
+        "aditionalInfo": "Ask about the Private Group Option, available on any date.",
+        "includes": [
+          { "icon": faShuttleVan, "text": "Transportation with A/C" },
+          { "icon": faUserTie, "text": "Guide" },
+          { "icon": 'icon-mojito', "text": "Mixology class" },
+          { "icon": 'icon-restaurant', "text": "5 course dinner with 9 dishes" },
+          { "icon": 'icon-wine-glass', "text": "Wine pairing with 5 botique wines, tequila and mezcal tasting." },
+        ],
+        "downloadables": [
+          {
+            title: "Riviera Maya",
+            description: "Download the pdf to verify the pick up schedule for your hotel.",
+            iconTitle: "Departure",
+            file: TTRivieraPDF,
+            icon: faShuttleVan
+          },
+          {
+            title: "Cancún",
+            description: "Download the pdf to verify the pick up schedule for your hotel.",
+            iconTitle: "Departure",
+            file: TTCancunPDF,
+            icon: faShuttleVan
+          },
+          {
+            title: undefined,
+            description: "Download the pdf to see the menu.",
+            iconTitle: "Menu",
+            file: TTMenuEn,
+            icon: 'icon-restaurant'
+          }
+        ]
+      }
+    },
     "TheTacoTour ": {
       "es": {
         "title": "The Taco Tour ",
@@ -296,7 +428,7 @@ const experiencesByOrigin = {
           { "icon": faShuttleVan, "text": "Transporte" },
           { "icon": faUserTie, "text": "Guía" },
           { "icon": faWineGlassAlt, "text": "Bebidas alcohólicas" },
-          { "icon": faServer, "text": "Tacos" },
+          { "icon": 'icon-restaurant', "text": "Tacos" },
         ],
         "downloadables": [
           {
@@ -311,7 +443,7 @@ const experiencesByOrigin = {
             description: "Descarga el pdf para ver el menú",
             iconTitle: "Menu",
             file: TacoMenuEs,
-            icon: faServer,
+            icon: 'icon-restaurant',
           },
         ]
       },
@@ -345,7 +477,7 @@ const experiencesByOrigin = {
           { "icon": faShuttleVan, "text": "Transportation" },
           { "icon": faUserTie, "text": "Guide" },
           { "icon": faWineGlassAlt, "text": "Alcoholoic drinks" },
-          { "icon": faServer, "text": "Tacos" },
+          { "icon": 'icon-restaurant', "text": "Tacos" },
         ],
         "downloadables": [
           {
@@ -360,7 +492,7 @@ const experiencesByOrigin = {
             description: "Download the pdf to see the menu",
             iconTitle: "Menu",
             file: TacoMenuEn,
-            icon: faServer,
+            icon: 'icon-restaurant',
           },
         ]
       },
