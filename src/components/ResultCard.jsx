@@ -30,7 +30,7 @@ const ResultCard = (props) => {
       <div className="result-image-container" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
       <div className="result-details">
         <h2>{title}</h2>
-        <h3>{city}, {state}</h3>
+        <h3>{city}{state ? `, ${state}` : ''}</h3>
         <p>{description}</p>
         <h3>{text.from} ${price.toLocaleString('en-US')}</h3>
         <p style={{ marginTop: 0 }}>{text.perPerson}</p>

@@ -20,6 +20,13 @@ export default function ExperiencePage(props) {
   const [numberOfChildren, setNumberOfChildren] = useState(0);
   const [priceTotal, setPriceTotal] = useState((parseInt(experience.price) * numberOfPeople));
 
+  useEffect(function scrollToTop() {
+    const top = document.getElementById("top");
+    if (top) {
+      top.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  },[])
+
   function addPerson() {
     setNumberOfPeople(num => num + 1);
     setPriceTotal((prevPrice) => prevPrice + (parseInt(experience.price)));
@@ -70,8 +77,8 @@ export default function ExperiencePage(props) {
   }
 
   return (
-    <div className="experience-page">
-      <div className="experience-image-header">
+    <div className="experience-page" >
+      <div className="experience-image-header" id="top">
         <CarouselProvider
           naturalSlideWidth={320}
           naturalSlideHeight={320}
@@ -97,7 +104,7 @@ export default function ExperiencePage(props) {
               <section className="text-suggestions">
                 <h3>{text.suggestions}</h3>
                 <ul>
-                  {experience.suggestions.map((suggestion) => <li>{suggestion}</li>)}
+                  {experience.suggestions.map((suggestion, i) => <li key={i}>{suggestion}</li>)}
                 </ul>
               </section>
             )
@@ -108,7 +115,7 @@ export default function ExperiencePage(props) {
               <section className="text-restrictions">
                 <h3>{text.restrictions}</h3>
                 <ul>
-                  {experience.restrictions.map((restriction) => <li>{restriction}</li>)}
+                  {experience.restrictions.map((restriction, i) => <li key={i}>{restriction}</li>)}
                 </ul>
               </section>
             )
@@ -118,7 +125,7 @@ export default function ExperiencePage(props) {
             experience.downloadables && experience.downloadables.length > 0
               ? (
                 <section className="downloadables-container">
-                  {experience.downloadables.map((item) => <DownloadablePDF item={item} text={text} key={item.title} />)}
+                  {experience.downloadables.map((item, i) => <DownloadablePDF item={item} text={text} key={`${item.title}-${i}`} />)}
                 </section>
               )
               : null
@@ -161,8 +168,8 @@ export default function ExperiencePage(props) {
             ? (
               <section className="details-includes">
                 <h3 style={{ width: '100%' }}>{text.includes}:</h3>
-                {experience.includes.map((item) => (
-                  <div className="details-icon-column">
+                {experience.includes.map((item, i) => (
+                  <div key={i} className="details-icon-column">
                     <div className="details-icon-container">
                       {typeof item.icon === 'string' ? <span class={item.icon}></span> : <FontAwesomeIcon className="details-icon" icon={item.icon} />}
                     </div>
@@ -170,6 +177,24 @@ export default function ExperiencePage(props) {
                   </div>
                 )
                 )}
+                {experience.additionalList && experience.additionalList.data && experience.additionalList.data.length > 0
+                  ? <h3 style={{ width: '100%' }}>{experience.additionalList.title}</h3>
+                  : null
+                }
+                {experience.additionalList && experience.additionalList.data && experience.additionalList.data.length > 0
+                  ? (
+                    experience.additionalList.data.map((item, i) => (
+                      <div key={i} className="details-icon-column">
+                        <div className="details-icon-container">
+                          {typeof item.icon === 'string' ? <span class={item.icon}></span> : <FontAwesomeIcon className="details-icon" icon={item.icon} />}
+                        </div>
+                        <h2>{item.text}</h2>
+                      </div>
+                    )
+                    )
+                  )
+                  : null
+                }
               </section>
             )
             : null

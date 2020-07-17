@@ -13,7 +13,7 @@ export default function DownloadablePDF({ item, text }) {
 
   return (
     <div className="trip-grid">
-      <div>{typeof icon === 'string' ? <span class={icon}></span> : <FontAwesomeIcon className="details-icon column1" icon={faShuttleVan} />}</div>
+      <div>{typeof icon === 'string' ? <span className={icon}></span> : <FontAwesomeIcon className="details-icon column1" icon={faShuttleVan} />}</div>
       <h2 className="column2">{title}</h2>
       <h3 className="column1">{iconTitle}</h3>
       <p className="column2"><strong>{description}</strong></p>

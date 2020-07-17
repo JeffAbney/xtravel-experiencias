@@ -58,6 +58,48 @@
   content: "\0068";
 }
 
+[data-icon]:before {
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-size: 28px;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-diving-goggles:before {
+  font-family: "icons-whale" !important;
+  content: "\61";
+}
+.icon-food-and-restaurant:before {
+  font-family: "icons-whale" !important;
+  content: "\62";
+}
+.icon-gopro:before {
+  font-family: "icons-whale" !important;
+  content: "\63";
+}
+.icon-wetsuit:before {
+  font-family: "icons-whale" !important;
+  content: "\64";
+}
+
 /* END ICONS */
 
 * {
@@ -103,6 +145,10 @@ button:hover {
   text-decoration: none;
 }
 
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
 .detail-input,
 .detail-select,
 #date-picker-vuelta,
@@ -129,7 +175,7 @@ button:hover {
   height: 300px;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-image: url("../src/assets/images/Cenote.JPG");
+  background-image: url("../src/assets/images/Experiecias_fondo_xcaret.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -184,6 +230,7 @@ button:hover {
   line-height: 18px;
   font-weight: bold;
   text-decoration: none;
+  padding: 0;
 }
 
 .dark-button {
@@ -348,6 +395,10 @@ label {
   overflow-x: hidden;
 }
 
+.results-card-container {
+  flex: 1;
+}
+
 .header-container {
   display: flex;
   justify-content: flex-start;
@@ -364,7 +415,7 @@ label {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: flex-start;
+  justify-content: space-evenly;
 }
 
 .result-card {
@@ -670,6 +721,7 @@ label {
 .header-image-container img {
   height: 100%;
   width: auto;
+  max-width: unset;
 }
 
 .experience-details {
@@ -717,6 +769,7 @@ label {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .details-icon-column {
@@ -870,6 +923,14 @@ label {
   font-weight: bold;
 }
 
+.carousel {
+  overflow-y: hidden;
+}
+
+.downloadables-container {
+  margin-bottom: 80px;
+}
+
 /* -------------------------- START MOBILE STYLES ------------------ */
 
 @media only screen and (max-device-width: 812px) {
@@ -947,6 +1008,10 @@ label {
     padding: 25px 15px;
   }
 
+  .trip-grid > * {
+    max-width: 60%;
+  }
+
   .header-container h1 {
     max-width: initial;
   }
@@ -961,7 +1026,6 @@ label {
 
   .result-card {
     width: initial;
-    height: initial;
   }
 
   .experience-details {

@@ -10,8 +10,6 @@ import { LanguageContext } from '../../components/LanguageContext';
 import ResultCard from '../../components/ResultCard';
 import 'react-datepicker/dist/react-datepicker.css';
 import dropDownArrow from '../../assets/icons/dropdown_arrow.png';
-import checkSpace from '../../assets/icons/check_Space.png';
-import checkMark from '../../assets/icons/Checkmark.png';
 import { experiencesByOrigin } from '../../constants/experiences';
 import excursionOrigins from '../../constants/origins';
 import inputListValueValidator from '../../utils/inputListValueValidator';
@@ -69,17 +67,6 @@ const Home = (props) => {
     // setMinTime(calculateMinTime(fecha));
     setFechaIda(fecha);
   }
-
-  // function showDestinations(origen) {
-  //   if (origen === 'Merida') {
-  //     return excursionsFromMerida.map(
-  //       (destino) => <option key={destino} value={destino}>{destino}</option>,
-  //     );
-  //   }
-  //   return excursionsFromCancun.map(
-  //     (destino) => <option key={destino} value={destino}>{destino}</option>,
-  //   );
-  // }
 
   inputListValueValidator(texts[language]['index-v']);
   return (
@@ -141,13 +128,13 @@ const Home = (props) => {
       {resultados
         ? (
           <div className="results-container">
-            <div className="header-container">
+            <div className="header-container" id="resultados">
               <h1>{texts[language]['results-header']}</h1>
             </div>
-            <div className="results-card-container" id="resultados">
-              {Object.keys(resultados).map((experience) =>
+            <div className="results-card-container" >
+              {Object.keys(resultados).map((experience, i) =>
                 <ResultCard
-                  key={`experience-${resultados[experience][language].title}`}
+                  key={`experience-${resultados[experience][language].title}-${i}`}
                   experience={resultados[experience][language]}
                   language={language}
                   setExperience={setExperience}

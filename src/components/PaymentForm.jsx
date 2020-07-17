@@ -4,11 +4,14 @@ import texts from '../constants/texts';
 import { LanguageContext } from '../components/LanguageContext';
 import makePurchase from '../utils/makePurchase';
 import paymentFieldsList from '../constants/paymentFieldsList';
+import inputListValueValidator from '../utils/inputListValueValidator';
+import { hotelesCancun, xtravelHotelsCancun, xtravelHotelsRiviera } from '../constants/hotels';
 
 const PaymentForm = (props) => {
   const { reservationData, ScrollToTop, goToThankYou, price, setIsLoading, setPayment_Method } = props;
-  const { tipoDeViaje } = reservationData;
+  const { experience, origen } = reservationData;
   const { language } = useContext(LanguageContext);
+  const text = texts[language];
   const { register, handleSubmit, watch, errors } = useForm();
   const watchPaymentMethod = watch('paymentMethod', 'card');
   const watchCardName = watch('cardName', '');
@@ -37,6 +40,28 @@ const PaymentForm = (props) => {
       document.getElementById("card-form").scrollIntoView({ behavior: "smooth" });
     }
   }, [errors]);
+
+  function showDestinations(origen) {
+    const destinos = ["problem"];
+    if (experience.title === 'Beauty Experience') {
+      return hotelesCancun.map(
+        (destino) => <option key={destino} value={destino}>{destino}</option>,
+      );
+    } else if (experience.title === 'The Traveler Table' || experience.title === 'Whale Shark Experience') {
+      return [...xtravelHotelsCancun, ...xtravelHotelsRiviera].map(
+        (destino) => <option key={destino} value={destino}>{destino}</option>,
+      );
+    } else if (experience.title === 'The Taco Tour') {
+      return xtravelHotelsRiviera.map(
+        (destino) => <option key={destino} value={destino}>{destino}</option>,
+      );
+    }
+
+
+    return destinos.map((destino) => <option key={destino} value={destino}>{destino}</option>);
+  }
+
+  inputListValueValidator(text.invalidSelection);
 
   const fullReservationData = {
     ...reservationData,
@@ -127,6 +152,22 @@ const PaymentForm = (props) => {
           <input type="text" size="60" name="clientName" placeholder={texts[language]['payform-12']} ref={register({ required: true })} />
         </label>
       </div>
+
+      {experience.transportation
+        ? (
+          <div className="payment-form-section">
+            <h1 className="payment-form-section-title">Hotel</h1>
+            <label>
+              <h2 className="payment-form-field-title">{texts[language]['payform-29']}</h2>
+              <input type="text" autoComplete="off" list="hotels" size="60" name="hotel" placeholder={texts[language]['payform-30']} ref={register({ required: true })} />
+              <datalist id="hotels">
+                {showDestinations(origen)}
+              </datalist>
+            </label>
+          </div>
+        )
+        : null
+      }
 
       <div className="payment-form-section">
         <h1 className="payment-form-section-title">{texts[language]['payform-22']}</h1>
